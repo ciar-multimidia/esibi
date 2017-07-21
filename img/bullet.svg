@@ -1,0 +1,8 @@
+
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="10px" height="10px" viewBox="0 0 10 10" enable-background="new 0 0 10 10" xml:space="preserve">
+<g>
+	<path fill="#FFFFFF" d="M5,0L0,5l5,5l5-5L5,0z M5,8.333L1.667,5L5,1.667L8.333,5L5,8.333z"/>
+</g>
+<rect x="3.822" y="3.822" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -2.0711 5)" fill="#FFFFFF" width="2.357" height="2.357"/>
+</svg>
