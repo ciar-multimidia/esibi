@@ -525,12 +525,12 @@ section, footer {
       section .box-content .content .letraporletra, footer .box-content .content .letraporletra {
         letter-spacing: -.1em; }
       section .box-content .content div.libras div.cont-video, footer .box-content .content div.libras div.cont-video {
-        width: 270px;
-        height: 270px;
+        width: 240px;
+        height: 240px;
         position: relative;
         overflow: hidden;
-        -webkit-clip-path: circle(135px at center);
-        clip-path: circle(135px at center);
+        -webkit-clip-path: circle(120px at center);
+        clip-path: circle(120px at center);
         border-radius: 50%; }
         section .box-content .content div.libras div.cont-video video, footer .box-content .content div.libras div.cont-video video {
           z-index: 0;
@@ -545,75 +545,74 @@ section, footer {
           transition: filter 0.2s linear;
           -webkit-filter: grayscale(70%);
           filter: grayscale(70%); }
-        section .box-content .content div.libras div.cont-video .controle, footer .box-content .content div.libras div.cont-video .controle {
+        section .box-content .content div.libras div.cont-video button, footer .box-content .content div.libras div.cont-video button {
           position: absolute;
-          top: 0;
-          left: 0;
-          display: block;
-          z-index: 1;
-          width: 100%;
-          height: 100%;
-          -webkit-transition: background-color 0.2s linear;
-          -moz-transition: background-color 0.2s linear;
-          transition: background-color 0.2s linear;
-          background-color: rgba(0, 0, 0, 0.25);
-          display: -webkit-box;
-          display: -moz-box;
-          display: box;
-          display: -webkit-flex;
-          display: -moz-flex;
-          display: -ms-flexbox;
-          display: flex;
-          -webkit-box-pack: center;
-          -moz-box-pack: center;
-          box-pack: center;
-          -webkit-justify-content: center;
-          -moz-justify-content: center;
-          -ms-justify-content: center;
-          -o-justify-content: center;
-          justify-content: center;
-          -ms-flex-pack: center;
-          -webkit-box-align: center;
-          -moz-box-align: center;
-          box-align: center;
-          -webkit-align-items: center;
-          -moz-align-items: center;
-          -ms-align-items: center;
-          -o-align-items: center;
-          align-items: center;
-          -ms-flex-align: center; }
-          section .box-content .content div.libras div.cont-video .controle button, footer .box-content .content div.libras div.cont-video .controle button {
-            display: inline-block;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            -ms-appearance: none;
-            -o-appearance: none;
-            appearance: none;
-            border: 0px solid transparent;
-            background-color: transparent;
-            font-family: "Roboto", Tahoma, sans-serif;
-            padding: 0;
-            margin: 0;
-            -webkit-transition: opacity 0.2s linear, -webkit-transform 0.2s ease-in-out;
-            -moz-transition: opacity 0.2s linear, -moz-transform 0.2s ease-in-out;
-            transition: opacity 0.2s linear, transform 0.2s ease-in-out; }
-            section .box-content .content div.libras div.cont-video .controle button:focus, footer .box-content .content div.libras div.cont-video .controle button:focus {
-              outline: 0px solid transparent; }
-            section .box-content .content div.libras div.cont-video .controle button img, footer .box-content .content div.libras div.cont-video .controle button img {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          -ms-appearance: none;
+          -o-appearance: none;
+          appearance: none;
+          border: 0px solid transparent;
+          background-color: transparent;
+          font-family: "Roboto", Tahoma, sans-serif;
+          padding: 0;
+          margin: 0; }
+          section .box-content .content div.libras div.cont-video button:hover, footer .box-content .content div.libras div.cont-video button:hover {
+            cursor: pointer; }
+          section .box-content .content div.libras div.cont-video button:focus, footer .box-content .content div.libras div.cont-video button:focus {
+            outline: 0px solid transparent; }
+          section .box-content .content div.libras div.cont-video button img, footer .box-content .content div.libras div.cont-video button img {
+            -webkit-transition: -webkit-transform 0.2s ease-in-out;
+            -moz-transition: -moz-transform 0.2s ease-in-out;
+            transition: transform 0.2s ease-in-out; }
+          section .box-content .content div.libras div.cont-video button.btplaypause, footer .box-content .content div.libras div.cont-video button.btplaypause {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            -webkit-transition: all 0.2s linear;
+            -moz-transition: all 0.2s linear;
+            transition: all 0.2s linear;
+            -webkit-transition-property: background-color, opacity;
+            -moz-transition-property: background-color, opacity;
+            transition-property: background-color, opacity;
+            background-color: rgba(0, 0, 0, 0.25);
+            opacity: 1; }
+            section .box-content .content div.libras div.cont-video button.btplaypause img, footer .box-content .content div.libras div.cont-video button.btplaypause img {
               width: 40px;
               height: auto; }
-            section .box-content .content div.libras div.cont-video .controle button.btplay, footer .box-content .content div.libras div.cont-video .controle button.btplay {
-              width: 100%;
-              height: 100%; }
-            section .box-content .content div.libras div.cont-video .controle button.btpause, footer .box-content .content div.libras div.cont-video .controle button.btpause {
-              display: none;
-              width: auto;
+              section .box-content .content div.libras div.cont-video button.btplaypause img:nth-child(2), footer .box-content .content div.libras div.cont-video button.btplaypause img:nth-child(2) {
+                display: none; }
+            section .box-content .content div.libras div.cont-video button.btplaypause:hover, section .box-content .content div.libras div.cont-video button.btplaypause:focus, footer .box-content .content div.libras div.cont-video button.btplaypause:hover, footer .box-content .content div.libras div.cont-video button.btplaypause:focus {
+              background-color: rgba(0, 0, 0, 0.5); }
+              section .box-content .content div.libras div.cont-video button.btplaypause:hover img, section .box-content .content div.libras div.cont-video button.btplaypause:focus img, footer .box-content .content div.libras div.cont-video button.btplaypause:hover img, footer .box-content .content div.libras div.cont-video button.btplaypause:focus img {
+                -webkit-transform: scale(1.2);
+                -moz-transform: scale(1.2);
+                -ms-transform: scale(1.2);
+                -o-transform: scale(1.2);
+                transform: scale(1.2); }
+          section .box-content .content div.libras div.cont-video button.btreset, footer .box-content .content div.libras div.cont-video button.btreset {
+            display: none;
+            bottom: 5px;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            -moz-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+            -o-transform: translateX(-50%);
+            transform: translateX(-50%);
+            -webkit-transition: opacity 0.2s linear;
+            -moz-transition: opacity 0.2s linear;
+            transition: opacity 0.2s linear;
+            opacity: 1; }
+            section .box-content .content div.libras div.cont-video button.btreset img, footer .box-content .content div.libras div.cont-video button.btreset img {
+              width: 27px;
               height: auto; }
-            section .box-content .content div.libras div.cont-video .controle button.btreset, footer .box-content .content div.libras div.cont-video .controle button.btreset {
-              margin-left: 20px;
-              display: none;
-              width: auto;
-              height: auto; }
+            section .box-content .content div.libras div.cont-video button.btreset:hover img, section .box-content .content div.libras div.cont-video button.btreset:focus img, footer .box-content .content div.libras div.cont-video button.btreset:hover img, footer .box-content .content div.libras div.cont-video button.btreset:focus img {
+              -webkit-transform: scale(1.2);
+              -moz-transform: scale(1.2);
+              -ms-transform: scale(1.2);
+              -o-transform: scale(1.2);
+              transform: scale(1.2); }
         section .box-content .content div.libras div.cont-video svg, footer .box-content .content div.libras div.cont-video svg {
           pointer-events: none;
           z-index: 1;
@@ -636,29 +635,22 @@ section, footer {
               stroke: #313487; }
             section .box-content .content div.libras div.cont-video svg circle.buffer, footer .box-content .content div.libras div.cont-video svg circle.buffer {
               opacity: 0; }
-      section .box-content .content div.libras.hover .cont-video:hover .controle, footer .box-content .content div.libras.hover .cont-video:hover .controle {
-        background-color: rgba(0, 0, 0, 0.5); }
-      section .box-content .content div.libras.hover .cont-video button:hover, footer .box-content .content div.libras.hover .cont-video button:hover {
-        cursor: pointer;
-        -webkit-transform: scale(1.2);
-        -moz-transform: scale(1.2);
-        -ms-transform: scale(1.2);
-        -o-transform: scale(1.2);
-        transform: scale(1.2); }
       section .box-content .content div.libras[data-playing='true'] .cont-video video, footer .box-content .content div.libras[data-playing='true'] .cont-video video {
         -webkit-filter: grayscale(0%);
         filter: grayscale(0%); }
-      section .box-content .content div.libras[data-playing='true'] .cont-video .controle, footer .box-content .content div.libras[data-playing='true'] .cont-video .controle {
-        background-color: transparent; }
-        section .box-content .content div.libras[data-playing='true'] .cont-video .controle button, footer .box-content .content div.libras[data-playing='true'] .cont-video .controle button {
-          opacity: 0; }
-          section .box-content .content div.libras[data-playing='true'] .cont-video .controle button.btplay, footer .box-content .content div.libras[data-playing='true'] .cont-video .controle button.btplay {
-            display: none; }
-          section .box-content .content div.libras[data-playing='true'] .cont-video .controle button.btpause, footer .box-content .content div.libras[data-playing='true'] .cont-video .controle button.btpause {
-            display: inline-block; }
-          section .box-content .content div.libras[data-playing='true'] .cont-video .controle button.btreset, footer .box-content .content div.libras[data-playing='true'] .cont-video .controle button.btreset {
-            display: inline-block; }
-      section .box-content .content div.libras[data-playing='true'].hover .cont-video:hover .controle button, footer .box-content .content div.libras[data-playing='true'].hover .cont-video:hover .controle button {
+      section .box-content .content div.libras[data-playing='true'] .cont-video button.btplaypause, footer .box-content .content div.libras[data-playing='true'] .cont-video button.btplaypause {
+        opacity: 0;
+        background-color: rgba(0, 0, 0, 0.5); }
+        section .box-content .content div.libras[data-playing='true'] .cont-video button.btplaypause img:nth-child(1), footer .box-content .content div.libras[data-playing='true'] .cont-video button.btplaypause img:nth-child(1) {
+          display: none; }
+        section .box-content .content div.libras[data-playing='true'] .cont-video button.btplaypause img:nth-child(2), footer .box-content .content div.libras[data-playing='true'] .cont-video button.btplaypause img:nth-child(2) {
+          display: inline; }
+      section .box-content .content div.libras[data-playing='true'] .cont-video:hover button.btplaypause, footer .box-content .content div.libras[data-playing='true'] .cont-video:hover button.btplaypause {
+        opacity: 1; }
+      section .box-content .content div.libras[data-resetavel='true'] .cont-video button.btreset, footer .box-content .content div.libras[data-resetavel='true'] .cont-video button.btreset {
+        display: block;
+        opacity: 0; }
+      section .box-content .content div.libras[data-resetavel='true'] .cont-video:hover button.btreset, footer .box-content .content div.libras[data-resetavel='true'] .cont-video:hover button.btreset {
         opacity: 1; }
       section .box-content .content .texto, footer .box-content .content .texto {
         font-family: "Roboto", Tahoma, sans-serif;
@@ -956,15 +948,19 @@ header#header {
     #s3 .info-biblios .info-cidade.gyn {
       width: 100%; }
       #s3 .info-biblios .info-cidade.gyn .container-textos > div {
-        width: 50%; }
-        #s3 .info-biblios .info-cidade.gyn .container-textos > div:nth-of-type(-n+2) {
+        width: 33%; }
+        #s3 .info-biblios .info-cidade.gyn .container-textos > div:nth-of-type(-n+3) {
           margin-bottom: 2em; }
     #s3 .info-biblios .info-cidade.jatai {
-      width: 100%; }
+      width: 66%; }
+      #s3 .info-biblios .info-cidade.jatai div.titulo-cidade h3 {
+        margin-left: 0; }
+      #s3 .info-biblios .info-cidade.jatai div.titulo-cidade .tracejado {
+        margin-right: 0.4em; }
       #s3 .info-biblios .info-cidade.jatai .container-textos > div {
         width: 50%; }
     #s3 .info-biblios .info-cidade.aparecida {
-      width: 50%; }
+      width: 33%; }
       #s3 .info-biblios .info-cidade.aparecida div.titulo-cidade h3 {
         margin-left: 0; }
       #s3 .info-biblios .info-cidade.aparecida div.titulo-cidade .tracejado {
@@ -972,7 +968,7 @@ header#header {
       #s3 .info-biblios .info-cidade.aparecida .container-textos > div {
         width: 100%; }
     #s3 .info-biblios .info-cidade.catalao {
-      width: 50%; }
+      width: 33%; }
       #s3 .info-biblios .info-cidade.catalao div.titulo-cidade h3 {
         margin-left: 0; }
       #s3 .info-biblios .info-cidade.catalao div.titulo-cidade .tracejado {
@@ -980,7 +976,7 @@ header#header {
       #s3 .info-biblios .info-cidade.catalao .container-textos > div {
         width: 100%; }
     #s3 .info-biblios .info-cidade.goias {
-      width: 50%; }
+      width: 33%; }
       #s3 .info-biblios .info-cidade.goias div.titulo-cidade h3 {
         margin-left: 0; }
       #s3 .info-biblios .info-cidade.goias .container-textos > div {
@@ -1151,6 +1147,7 @@ header#header {
     width: 640px; }
   #s4 div.box-content div.content ol.texto.full {
     margin: 0;
+    margin-bottom: 4em;
     padding: 0;
     width: 100%;
     display: -webkit-box;
@@ -2147,19 +2144,24 @@ footer {
     align-items: center;
     -ms-flex-align: center; }
     footer div.flexbox > * {
-      margin-right: 2em; }
+      margin-right: 1.5em; }
       footer div.flexbox > *:last-child {
         margin-right: 0; }
   footer .logotreinamentofinal {
     height: 60px;
     width: auto; }
   footer dl.contato {
-    padding: 1em 1.5em;
+    font-size: 0.9em;
+    padding: 1em;
+    margin-top: 0;
+    margin-bottom: 0;
     border-right: 2px dashed black;
     border-left: 2px dashed black; }
     footer dl.contato dt, footer dl.contato dd {
       display: inline;
       margin: 0; }
+      footer dl.contato dt.email, footer dl.contato dd.email {
+        word-break: break-all; }
     footer dl.contato dt {
       font-weight: bold; }
   footer div.logos {
@@ -2181,15 +2183,15 @@ footer {
     -ms-flex-align: center; }
     footer div.logos img {
       width: auto;
-      margin-right: 1.4em; }
+      margin-right: 1.2em; }
       footer div.logos img:last-child {
         margin-right: 0; }
       footer div.logos img:nth-child(1) {
-        height: 30px; }
+        height: 27px; }
       footer div.logos img:nth-child(2) {
-        height: 50px; }
+        height: 42px; }
       footer div.logos img:nth-child(3) {
-        height: 70px; }
+        height: 60px; }
   footer button.fichatecnica {
     text-align: center;
     display: inline-block;
@@ -2243,7 +2245,9 @@ footer {
       transform: scale(1.05); }
     footer button.fichatecnica img {
       display: block;
-      margin: 0; }
+      margin: 0;
+      width: 30px;
+      height: auto; }
     footer button.fichatecnica p {
       font-size: 0.8em;
       margin: 0;

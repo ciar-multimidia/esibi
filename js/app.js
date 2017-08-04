@@ -28,8 +28,7 @@ jQuery(document).ready(function($) {
 			var video = $(el).find('video');
 			var progresso = $(el).find('svg > circle.progresso');
 			var buttons = $(el).find('button');
-			var btplay = $(el).find('button.btplay');
-			var btpause = $(el).find('button.btpause');
+			var btplaypause = $(el).find('button.btplaypause');			
 			var btreset = $(el).find('button.btreset');
 			var perimetroProgresso = parseFloat( progresso.attr('r') )*2*Math.PI;
 			var attProgresso;
@@ -47,7 +46,10 @@ jQuery(document).ready(function($) {
   				if (video[0].currentTime/video[0].duration >= 0.9999) {
 	  				progresso.css('stroke-dashoffset', perimetroProgresso);
 	  				cancelAnimationFrame(attProgresso);
-					$(el).attr('data-playing', 'false');
+					$(el).attr({
+						'data-playing': 'false',
+						'data-resetavel': 'false'
+					});
 	  				videoEstaRodando = false;
   				}
 			}
@@ -57,13 +59,23 @@ jQuery(document).ready(function($) {
 			// 	/* Act on the event */
 			// });
 
-			btplay.on('click', function(event) {
+			btplaypause.on('click', function(event) {
 				if (videoEstaRodando === false) {
 					video[0].play();
 					attProgresso = requestAnimationFrame(atualizarProgresso);
-					$(el).attr('data-playing', 'true').removeClass('hover');
+					$(el).attr({
+						'data-playing': 'true',
+						'data-resetavel': 'true'
+					});
+					$(this).attr('title', $(this).attr('data-title-pause'));
 					temHover = false;
 					videoEstaRodando = true;
+				} else if (videoEstaRodando === true) {
+					video[0].pause();
+					$(el).attr('data-playing', 'false');
+					cancelAnimationFrame(attProgresso);
+					$(this).attr('title', $(this).attr('data-title-play'));
+					videoEstaRodando = false;
 				}
 			});
 
@@ -77,19 +89,18 @@ jQuery(document).ready(function($) {
 				}
 			})
 
-			btpause.on('click', function(event) {
-				if (videoEstaRodando === true) {
-					video[0].pause();
-					$(el).attr('data-playing', 'false');
-					cancelAnimationFrame(attProgresso);
-					videoEstaRodando = false;
-				}
-			});
 
 			btreset.on('click', function(event) {
 				video[0].pause();
 				video[0].currentTime = 0;
-				$(el).attr('data-playing', 'false');
+				progresso.css({
+					'stroke-dasharray' : perimetroProgresso,
+					'stroke-dashoffset' : perimetroProgresso,
+				});
+				$(el).attr({
+						'data-playing': 'false',
+						'data-resetavel': 'false'
+					});
 				videoEstaRodando = false;
 				/* Act on the event */
 			});

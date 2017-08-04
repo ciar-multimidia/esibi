@@ -116,24 +116,24 @@
 
 
 	{
-		"enunciado": "Devolvi um livro na biblioteca com atraso, gerei a Guia de Recolhimento da União (GRU) e efetuei o pagamento no banco. Existe algum outro procedimento que devo fazer para ter o débito quitado?",
+		"enunciado": "Devolvi um livro na biblioteca com atraso, gerei a Guia de Recolhimento da União (GRU) e efetuei o pagamento no Banco. Existe algum outro procedimento que devo fazer para ter o débito quitado?",
 
 		"texto_auxiliar": "Após o pagamento de uma GRU é necessário que o usuário apresente o comprovante de pagamento identificado com nome e número de matrícula em qualquer biblioteca do Sibi/UFG para que seja efetuada a baixa da multa no sistema da biblioteca ou envie anexado por e-mail, pois a baixa não é automática.",
 
 		"alternativas": [
 			{
-				"texto": "Não. Assim que a GRU é paga no banco o sistema recebe um aviso para que o funcionário dê baixa na multa.",
+				"texto": "Não. Assim que a GRU é paga no banco, a multa desaparece do sistema.",
 				"esta_correta": false 
 			},
 
 			{
-				"texto": "Sim. Devo levar o comprovante de pagamento em qualquer biblioteca do Sibi/UFG, ou enviá-lo por e-mail, para que seja efetuada a baixa da multa.",
+				"texto": "Sim. Devo levar o comprovante de pagamento em qualquer biblioteca que faz parte do Sistema de Bibliotecas da UFG (Sibi/UFG) para que seja efetuada a baixa da multa.",
 				"esta_correta": true 
 			},
 
 			{
-				"texto": "Não. Assim que a GRU é paga a multa é baixada automaticamente.",
-				"esta_correta": false
+				"texto": "Sim. Devo enviar o comprovante de pagamento para o email da biblioteca para que seja efetuada a baixa da multa.",
+				"esta_correta": true 
 			}
 		]
 	},
@@ -156,13 +156,13 @@
 			},
 
 			{
-				"texto": "Não. Se a biblioteca estiver fechada por causa de algum evento ou situação que lhe foi determinada, a devolução do material deverá ser feita no próximo dia útil sem ônus para o usuário.",
+				"texto": "Não. Se a biblioteca estiver fechada por causa de algum evento ou situação que lhe foi determinada, a devolução da obra deverá ser feita no próximo dia útil sem ônus para o usuário.",
 				"esta_correta": true
 			},
 
 			{
-				"texto": "Sim. Sempre que os materiais não forem devolvidos na data determinada, independentemente da situação, gerará multa ao usuário.",
-				"esta_correta": false
+				"texto": "Não. Se a biblioteca estiver fechada por um longo período, poderei aguardar até que a biblioteca volte ao seu funcionamento normal e não pagarei a multa pelo atraso gerado durante este período.",
+				"esta_correta": true
 			}
 		]
 	},
@@ -180,17 +180,17 @@
 
 		"alternativas": [
 			{
-				"texto": "Sim. Basta deixar qualquer documento com o funcionário que, após a volta do sistema, o empréstimo será registrado.",
+				"texto": "Sim. Basta deixar com o funcionário a carteira de identidade que após a volta do sistema o empréstimo será registrado.",
 				"esta_correta": false 
 			},
 
 			{
-				"texto": "Sim. Posso deixar, com o funcionário, a minha carteira da biblioteca que, após a volta do sistema, o empréstimo será registrado.",
+				"texto": "Sim. Basta deixar com o funcionário a minha carteira da biblioteca que após a volta do sistema o empréstimo será registrado.",
 				"esta_correta": false 
 			},
 
 			{
-				"texto": "Não. A retirada de qualquer material da biblioteca fica suspensa quando ocorrer algum evento que impeça o funcionamento do sistema.",
+				"texto": "Não. A retirada de qualquer material da biblioteca fica suspenso quando ocorrer algum evento que impeça o funcionamento do sistema.",
 				"esta_correta": true
 			}
 		]
@@ -205,7 +205,7 @@
 	{
 		"enunciado": "Atrasei a devolução/renovação do material, pois não recebi o alerta da biblioteca me lembrando da data. Isto me desobriga do pagamento da multa gerada pelo atraso?",
 
-		"texto_auxiliar": "O alerta de devolução enviado por e-mail é uma cortesia da biblioteca. O não recebimento automático do e-mail com alerta de devolução não isenta o usuário do pagamento da multa decorrente do atraso, pois é sua responsabilidade observar a data de devolução/renovação dos materiais ou verificar a data através do seu login e senha no catálogo da biblioteca.",
+		"texto_auxiliar": "O alerta de devolução enviado por e-mail é uma cortesia da biblioteca. O não recebimento automático do e-mail com alerta de devolução não isenta o usuário do pagamento da multa decorrente do atraso, pois é da responsabilidade do usuário observar a data de devolução/renovação dos materiais ou verificar a data através do seu login e senha no catálogo da biblioteca.",
 
 		"alternativas": [
 			{
@@ -219,7 +219,7 @@
 			},
 
 			{
-				"texto": "Sim. Pois é obrigação da biblioteca lembrar a todos os usuários da data de vencimento dos materiais.",
+				"texto": "Sim. Pois é obrigação da biblioteca lembrar à todos os usuários da data de vencimento dos materiais.",
 				"esta_correta": false
 			}
 		]
@@ -243,7 +243,7 @@
 			},
 
 			{
-				"texto": " Sim. Posso usar a carteira de estudante.",
+				"texto": "Sim. O crachá da Universidade é o outro documento permitido para retirada de material informacional. Basta apresentá-lo no balcão de empréstimo.",
 				"esta_correta": false
 			},
 
@@ -267,7 +267,7 @@
 
 		"alternativas": [
 			{
-				"texto": "Solicitar a senha pessoalmente no balcão de empréstimos.",
+				"texto": "Ir no site da biblioteca, e pedir para lembrar a senha ao fazer o login.",
 				"esta_correta": false 
 			},
 
@@ -330,7 +330,7 @@
 			},
 
 			{
-				"texto": "Não preciso tomar nenhuma providência, a biblioteca tem que me procurar para saber do livro.",
+				"texto": "Não preciso tomar nenhuma providência, pois o coordenador tem que me procurar para saber do livro.",
 				"esta_correta": false
 			},
 
