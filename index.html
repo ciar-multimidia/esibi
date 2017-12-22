@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>e-SIBI - Treinamento para o Sistema de Bibliotecas da UFG</title>
+        <title>e-SIBI - Treinamento para o uso do Sistema de Bibliotecas da UFG</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -17,7 +17,7 @@
             <div class="box-content">
                 <div class="content">
                     <img id='logointro' src="img/logo.svg"  alt='Logotipo do Treinamento'>
-                    <h1 id='titulointro'>e-SIBI <span>Treinamento para o <br>Sistema de Bibliotecas UFG</span> </h1>
+                    <h1 id='titulointro'>e-SIBI <span>Treinamento para o uso do<br>Sistema de Bibliotecas UFG</span> </h1>
                 </div>
             </div>
             
@@ -26,13 +26,13 @@
         <main>
 
             <section id="s1">
-                <img src="img/borda-inclinada1.svg" alt="" class="injetar borda">
+                <img src="img/borda1.svg" alt="" class="borda">
                 <div class="box-content">
                 
                     <div class="content">
 
                         <div class="flexbox">
-                            <div class="libras hover" data-label='Vídeo de libras relativo à essa sessão' data-playing='false'>
+                            <div class="libras" aria-label='Vídeo de libras relativo à essa sessão' data-playing='false' data-resetavel='false'>
                                 <div class="icone-libras">
                                     <img src="img/icone_libras.svg" alt="Esse material possui vídeos de Libras traduzindo os textos.">
                                 </div>
@@ -40,23 +40,19 @@
                                 <div class="cont-video">
                                     <video src="libras/libras_teste.mp4" muted autobuffer aria-hidden='true'></video>
                                     
-                                    <div class="controle">
-                                        <button title='Reproduzir vídeo da Libras' class="btplay">
-                                            <img src="img/icon_play.svg" alt="">
-                                        </button>
-
-                                        <button title='Pausar vídeo' class="btpause">
-                                            <img src="img/icon_pause.svg" alt="">
-                                        </button>
-
-                                        <button title='Recomeçar vídeo' class="btreset">
-                                            <img src="img/icon_reset.svg" alt="">
-                                        </button>
-                                    </div>
+                                    <button title='Reproduzir vídeo' data-title-play='Reproduzir vídeo' data-title-pause='Pausar vídeo' class="btplaypause">
+                                        <img src="img/icon_play.svg" alt="">
+                                        <img src="img/icon_pause.svg" alt="">
+                                    </button>
+                                    
+                                    <button title='Recomeçar vídeo' class="btreset">
+                                        <img src="img/icon_reset.svg" alt="">
+                                    </button>
 
                                     <svg aria-hidden='true' version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
                                         <circle cx="50" cy="50" r="49"/>
                                         <circle class='progresso' cx="50" cy="50" r="49"/>
+                                        <circle class='buffer' cx="50" cy="50" r="49"/>
                                     </svg>
                                 </div>
                             </div>
@@ -66,11 +62,11 @@
 
                                 <p>As bibliotecas da UFG são pontos de apoio para produzir e consolidar o conhecimento. Todo o esforço das equipes que atuam nas bibliotecas é orientado neste sentido. </p>
 
-                                <p>Além da gama de materiais disponíveis, as bibliotecas oferecem espaços e serviços orientados para atender democraticamente o ensino, a pesquisa e a extensão. </p>
+                                <p>Além da gama de materiais disponíveis, as bibliotecas oferecem espaços e serviços orientados para atender democraticamente ao ensino, à pesquisa e à extensão.</p>
 
                                 <p>Este treinamento foi construído como primeiro canal de comunicação entre você, usuário, e as bibliotecas. </p>
                                 
-                                <p>Seja bem vindo!</p>
+                                <p>Seja bem-vindo!</p>
                                 
                                 <p><i>Sistema de Bibliotecas da UFG (Sibi/UFG)</i></p>
 
@@ -87,35 +83,30 @@
 
             <!-- Seção 2 - Sobre as bibliotecas -->
             <section id="s2">
-                <img src="img/borda_onda_2.svg" class="injetar borda">
+                <img src="img/borda2.svg" class="borda">
                 <div class="box-content">
                     <div class="content">
                         <div class="flexbox">
                             <div class="texto">
                                 <h2>O Sistema de Bibliotecas da UFG (Sibi/UFG)</h2>
-                                <p>O Sibi/UFG é composto por 9 bibliotecas, distribuídos pelo estado de Goiás.</p>
+                                <p>O Sibi/UFG é composto por 10 bibliotecas, distribuídas pelo estado de Goiás.</p>
                                 <p>As bibliotecas da UFG são do tipo universitária, com exceção da Biblioteca CEPAE, que é escolar.</p>
                                 <p>O usuário regular pode utilizar quaisquer bibliotecas do Sibi/UFG para estudar, consultar material, fazer cópias (dentro do limite legal) e pegar material emprestado.</p>
 
                             </div>
 
-                            <div class="libras hover" data-label='Vídeo de libras relativo à essa sessão' data-playing='false'>
+                            <div class="libras" aria-label='Vídeo de libras relativo à essa sessão' data-playing='false' data-resetavel='false'>
                                 <div class="cont-video">
                                     <video src="libras/libras_teste.mp4" muted autobuffer aria-hidden='true'></video>
                                     
-                                    <div class="controle">
-                                        <button title='Reproduzir vídeo da Libras' class="btplay">
-                                            <img src="img/icon_play.svg" alt="">
-                                        </button>
-
-                                        <button title='Pausar vídeo' class="btpause">
-                                            <img src="img/icon_pause.svg" alt="">
-                                        </button>
-
-                                        <button title='Recomeçar vídeo' class="btreset">
-                                            <img src="img/icon_reset.svg" alt="">
-                                        </button>
-                                    </div>
+                                    <button title='Reproduzir vídeo' data-title-play='Reproduzir vídeo' data-title-pause='Pausar vídeo' class="btplaypause">
+                                        <img src="img/icon_play.svg" alt="">
+                                        <img src="img/icon_pause.svg" alt="">
+                                    </button>
+                                    
+                                    <button title='Recomeçar vídeo' class="btreset">
+                                        <img src="img/icon_reset.svg" alt="">
+                                    </button>
 
                                     <svg aria-hidden='true' version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
                                         <circle cx="50" cy="50" r="49"/>
@@ -129,14 +120,14 @@
             </section>
 
             <section id="s3">
-                <img src="img/borda-zigzag.svg" class="injetar borda">
+                <img src="img/borda3.svg" class="borda">
                 <div class="box-content">
                     <div class="content">
                         <div id="mapa-interativo">
                             <div class="cidades">
                                 <div data-cidade='gyn'>
                                     <p>Goiânia</p>
-                                    <p>4 bibliotecas</p>
+                                    <p>5 bibliotecas</p>
                                 </div>
                                 <div data-cidade='aparecida'>
                                     <p>Aparecida de Goiânia</p>
@@ -157,11 +148,11 @@
                               
                             </div>
                             <div class="container-mapa">
-                                <img src="img/mapa-goias.svg" class="injetar mapa" alt='Mapa de Goiás indicando o local e a quantidade de bibliotecas do Sibi/UFG que existem no estado.' title='Mapa de Goiás indicando o local e a quantidade de bibliotecas do Sibi/UFG que existem no estado.'>
+                                <img src="img/mapa-goias.svg" class="mapa" alt='Mapa de Goiás indicando o local e a quantidade de bibliotecas do Sibi/UFG que existem no estado.' title='Mapa de Goiás indicando o local e a quantidade de bibliotecas do Sibi/UFG que existem no estado.'>
 
                                 <div class="marcador" data-cidade='gyn'>
                                     <div class="posrel">
-                                        <p class='numero'><span aria-hidden='true'>4</span><span class="apenas-screen-reader"> bibliotecas em Goiânia</span></p>
+                                        <p class='numero'><span aria-hidden='true'>5</span><span class="apenas-screen-reader"> bibliotecas em Goiânia</span></p>
                                     </div>
                                 </div>
 
@@ -206,10 +197,10 @@
                                         
                                         <dl>
                                             <dt>Endereço</dt>
-                                            <dd>Rua Aroeira, s/nº, Câmpus Samambaia, CEP 74690-900</dd>
+                                            <dd>Rua Aroeira, sem número, Campus Samambaia, CEP 74690-900</dd>
                                             <dt>Telefones</dt>
-                                            <dd>(62) 3521-1230<br>
-                                            (62) 3521-1116</dd>
+                                            <dd>(62) 3521-1151 - Administrativo<br>
+                                            (62) 3521-1230 - Atendimento ao usuário</dd>
                                             <dt>Horário de funcionamento</dt>
                                             <dd>De segunda a sexta, das 7h15 às 22h</dd>
                                         </dl>
@@ -219,7 +210,7 @@
                                         
                                         <dl>
                                             <dt>Endereço</dt>
-                                            <dd> Quinta Avenida, quadra 42, s/nº, Setor Universitário, CEP 74605-040</dd>
+                                            <dd> Quinta Avenida, quadra 42, sem número, Setor Universitário, CEP 74605-040</dd>
                                             <dt>Telefones</dt>
                                             <dd>(62) 3209-6505<br>
                                             (62) 3209-6013</dd>
@@ -232,7 +223,7 @@
                                         
                                         <dl>
                                             <dt>Endereço</dt>
-                                            <dd>Alameda Flamboyant, s/nº, Câmpus Samambaia, 74690-900</dd>
+                                            <dd>Alameda Flamboyant, sem número, Campus Samambaia, 74690-900</dd>
                                             <dt>Telefone</dt>
                                             <dd>(62) 3521-1294</dd>
                                             <dt>Horário de funcionamento</dt>
@@ -256,65 +247,23 @@
                                         
                                         <dl>
                                             <dt>Endereço</dt>
-                                            <dd>Alameda Palmeiras, s/nº, Câmpus Samambaia, CEP 74690-900</dd>
+                                            <dd>Alameda Palmeiras, sem número, Campus Samambaia, CEP 74690-900</dd>
                                             <dt>Telefone</dt>
                                             <dd>(62) 3521-1411</dd>
                                             <dt>Horário de funcionamento</dt>
-                                            <dd>De segunda a sexta, das 7h às 17h30</dd>
+                                            <dd>De segunda a sexta, das 9h às 21h</dd>
                                         </dl>
                                     </div>
-                                    <!-- <div>
+                                    <div>
                                         <h4>Seccional Museu Antropológico (BSMA)</h4>
                                         
                                         <dl>
                                             <dt>Endereço</dt>
-                                            <dd>(faltando)</dd>
+                                            <dd>Avenida Universitária, nº 1.166, Setor Universitário, CEP 74605-010</dd>
                                             <dt>Telefone</dt>
-                                            <dd>(faltando)</dd>
+                                            <dd>(62) 3209-6374</dd>
                                             <dt>Horário de funcionamento</dt>
-                                            <dd>(faltando)</dd>
-                                        </dl>
-                                    </div> -->
-                                </div>
-                            </div>
-
-
-                            
-
-
-                            <div class="info-cidade jatai">
-                                <div class="titulo-cidade">
-                                    <div class="tracejado"></div>
-                                    <h3>Jataí</h3>
-                                    <div class="tracejado"></div>
-                                </div>
-
-                                <div class="container-textos">
-                                    <div>
-                                        <h4>Seccional Regional Jataí – Jatobá (BSREJ Jatobá)</h4>
-                                        
-                                        <dl>
-                                            <dt>Endereço</dt>
-                                            <dd>Rodovia BR-364, km 192, Setor Parque Industrial, 3.800, CEP 75800-000</dd>
-                                            <dt>Telefone</dt>
-                                            <dd>(64) 3606-8261</dd>
-                                            <dt>Horário de funcionamento</dt>
-                                            <dd>De segunda a sexta, das 7h às 22h<br>
-                                            Sábado, das 8h às 12h (somente em período letivo)</dd>
-                                        </dl>
-                                    </div>
-
-                                    <div>
-                                        <h4>Seccional Regional Jataí – Riachuelo (BSREJ Riachuelo)</h4>
-                                        
-                                        <dl>
-                                            <dt>Endereço</dt>
-                                            <dd>Rua Riachuelo, s/nº, CEP 75800-000</dd>
-                                            <dt>Telefone</dt>
-                                            <dd>(64) 3606-8137</dd>
-                                            <dt>Horário de funcionamento</dt>
-                                            <dd>De segunda a sexta, das 7h às 22h<br>
-                                            Sábado, das 8h às 12h (somente em período letivo)</dd>
+                                            <dd>De segunda a sexta, das 7h às 13h</dd>
                                         </dl>
                                     </div>
                                 </div>
@@ -332,7 +281,7 @@
                                         
                                         <dl>
                                             <dt>Endereço</dt>
-                                            <dd>Rua Mucuri, s/nº, área 3, Bairro Conde dos Arcos, CEP 74969-017</dd>
+                                            <dd>Rua Mucuri, sem número, área 3, Bairro Conde dos Arcos, CEP 74969-017</dd>
                                             <dt>Telefone</dt>
                                             <dd>(62) 3209-6558</dd>
                                             <dt>Horário de funcionamento</dt>
@@ -355,7 +304,7 @@
                                         
                                         <dl>
                                             <dt>Endereço</dt>
-                                            <dd>Avenida Lamartine P. de Avelar, s/nº, CEP 75704-020</dd>
+                                            <dd>Avenida Lamartine P. de Avelar, sem número, CEP 75704-020</dd>
                                             <dt>Telefones</dt>
                                             <dd>(64) 3441-5360<br>
                                             (64) 3441-5306</dd>
@@ -390,33 +339,66 @@
                                     </div>
                                 </div>
                             </div>
+
+                             <div class="info-cidade jatai">
+                                <div class="titulo-cidade">
+                                    <h3>Jataí</h3>
+                                    <div class="tracejado"></div>
+                                </div>
+
+                                <div class="container-textos">
+                                    <div>
+                                        <h4>Seccional Regional Jataí – Jatobá (BSREJ Jatobá)</h4>
+                                        
+                                        <dl>
+                                            <dt>Endereço</dt>
+                                            <dd>Rodovia BR-364, km 192, Setor Parque Industrial, 3.800, CEP 75800-000</dd>
+                                            <dt>Telefone</dt>
+                                            <dd>(64) 3606-8261</dd>
+                                            <dt>Horário de funcionamento</dt>
+                                            <dd>De segunda a sexta, das 7h às 22h<br>
+                                            Sábado, das 8h às 12h (somente em período letivo)</dd>
+                                        </dl>
+                                    </div>
+
+                                    <div>
+                                        <h4>Seccional Regional Jataí – Riachuelo (BSREJ Riachuelo)</h4>
+                                        
+                                        <dl>
+                                            <dt>Endereço</dt>
+                                            <dd>Rua Riachuelo, sem número, CEP 75800-000</dd>
+                                            <dt>Telefone</dt>
+                                            <dd>(64) 3606-8137</dd>
+                                            <dt>Horário de funcionamento</dt>
+                                            <dd>De segunda a sexta, das 7h às 22h<br>
+                                            Sábado, das 8h às 12h (somente em período letivo)</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                 </div>
             </section>
 
             <section id="s4">
-                <img src="img/borda-zigzag.svg" class="injetar borda">
+                <img src="img/borda4.svg" class="borda">
                 <div class="box-content">
                     <div class="content">
 
                         <div class="flexbox">
-                            <div class="libras hover" data-label='Vídeo de libras relativo à essa sessão' data-playing='false'>
+                            <div class="libras" aria-label='Vídeo de libras relativo à essa sessão' data-playing='false' data-resetavel='false'>
                                 <div class="cont-video">
                                     <video src="libras/libras_teste.mp4" muted autobuffer aria-hidden='true'></video>
                                     
-                                    <div class="controle">
-                                        <button title='Reproduzir vídeo da Libras' class="btplay">
-                                            <img src="img/icon_play.svg" alt="">
-                                        </button>
-
-                                        <button title='Pausar vídeo' class="btpause">
-                                            <img src="img/icon_pause.svg" alt="">
-                                        </button>
-
-                                        <button title='Recomeçar vídeo' class="btreset">
-                                            <img src="img/icon_reset.svg" alt="">
-                                        </button>
-                                    </div>
+                                    <button title='Reproduzir vídeo' data-title-play='Reproduzir vídeo' data-title-pause='Pausar vídeo' class="btplaypause">
+                                        <img src="img/icon_play.svg" alt="">
+                                        <img src="img/icon_pause.svg" alt="">
+                                    </button>
+                                    
+                                    <button title='Recomeçar vídeo' class="btreset">
+                                        <img src="img/icon_reset.svg" alt="">
+                                    </button>
 
                                     <svg aria-hidden='true' version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
                                         <circle cx="50" cy="50" r="49"/>
@@ -428,7 +410,6 @@
                             <div class="texto">
                                 <h2>Serviços oferecidos pelo Sibi/UFG</h2>
                                 <p>O Sibi/UFG oferece diversos produtos e serviços. Conheça alguns deles.</p>
-                                <p>Veja mais nos links Produtos/ Serviços, no site do Sibi/UFG (<a href='https://www.bc.ufg.br' target="blank">www.bc.ufg.br</a>).</p>
                             </div>
                         </div>
 
@@ -444,7 +425,7 @@
                             <li class="item">
                                 <img src="img/icones_servicos/wifi.svg">
                                 <h4 lang='en'>Wi-fi</h4>
-                                <p>Internet sem fio da UFG (Eduroam).</p>
+                                <p>Internet sem fio (Eduroam). Para acesso use o <span lang='en'><i>login</i></span> e a senha do Portal UFGNet.</p>
                             </li>
 
                             <li class="item">
@@ -462,26 +443,31 @@
                             <li class="item">
                                 <img src="img/icones_servicos/orientacao.svg">
                                 <h4>Orientação sobre as normas de apresentação de trabalhos acadêmicos</h4>
-                                <p>Com base nas normas ABNT, que podem ser consultadas nas bibliotecas.</p>
+                                <p>Com base nas normas ABNT, que podem ser consultadas <span lang="en"><i>on line</i></span> nas bibliotecas.</p>
                             </li>
 
                             
 
                             <li class="item">
                                 <img src="img/icones_servicos/renovacao.svg">
-                                <h4>Renovação e reserva <span lang="en">on-line</span> de material informacional</h4>
+                                <h4>Renovação e reserva <span lang="en"><i>on line</i></span> de material informacional</h4>
                                 <p>Realizados através do site do Sibi/UFG, com senha e login próprios.</p>
                             </li>
 
                             
 
                         </ol>
+
+                        <div class="texto right">
+                                
+                                <p>Veja mais nos menus Produtos/ Serviços, no site do Sibi/UFG (<a href='https://www.bc.ufg.br' target="blank">www.bc.ufg.br</a>).</p>
+                            </div>
                     </div>
                 </div>
             </section>
 
             <section id="s5">
-                <img src="img/borda_onda_1.svg" class="injetar borda">
+                <img src="img/borda5.svg" class="borda">
                 <div class="box-content">
                     <div class="content">
                         <div class="texto">
@@ -493,40 +479,36 @@
                             <h3>Acervo Físico</h3>
                             <ol class="itens">
                                 <li>
-                                    <img src="img/icones_acervo/1_livro.svg" class="injetar" title='Ilustração de um livro'>
+                                    <img src="img/icones_acervo/1_livro.svg" title='Ilustração de um livro'>
                                     <p>Livros</p>
                                 </li>
                                 <li>
-                                    <img src="img/icones_acervo/2_periodicos_impressos_revistas_cientificas.svg" class="injetar">
-                                    <p>Periódicos impressos (revistas científicas)</p>
-                                </li>
-                                <li>
-                                    <img src="img/icones_acervo/3_jornal.svg" class="injetar">
+                                    <img src="img/icones_acervo/3_jornal.svg">
                                     <p>Jornais</p>
                                 </li>
                                 <li>
-                                    <img src="img/icones_acervo/4_revista.svg" class="injetar">
+                                    <img src="img/icones_acervo/4_revista.svg">
                                     <p>Revistas</p>
                                 </li>
                                 <li>
-                                    <img src="img/icones_acervo/5_cddvd.svg" class="injetar">
+                                    <img src="img/icones_acervo/5_cddvd.svg">
                                     <p>CD's / DVD's</p>
                                 </li>
                                 <li>
-                                    <img src="img/icones_acervo/6_mapa.svg" class="injetar">
+                                    <img src="img/icones_acervo/6_mapa.svg">
                                     <p>Mapas</p>
                                 </li>
                                 <li>
-                                    <img src="img/icones_acervo/7_partitura.svg" class="injetar">
+                                    <img src="img/icones_acervo/7_partitura.svg">
                                     <p>Partituras</p>
                                 </li>
                                 <li>
-                                    <img src="img/icones_acervo/8_lp.svg" class="injetar">
+                                    <img src="img/icones_acervo/8_lp.svg">
                                     <p>LP's</p>
                                 </li>
                                 <li>
-                                    <img src="img/icones_acervo/9_dissert_ms_dr.svg" class="injetar">
-                                    <p>Dissertações: mestrado e doutorado</p>
+                                    <img src="img/icones_acervo/9_dissert_ms_dr.svg">
+                                    <p>Dissertações e Teses</p>
                                 </li>
                             </ol>
                            
@@ -537,31 +519,31 @@
                             <h3>Acervo Digital</h3>
                             <ol class="itens">
                                 <li>
-                                    <img src="img/icones_acervo/10_base_de_dados.svg" class="injetar">
+                                    <img src="img/icones_acervo/10_base_de_dados.svg">
                                     <p>Base de dados</p>
                                 </li>
                                 <li>
-                                    <img src="img/icones_acervo/11_bdtd.svg" class="injetar">
+                                    <img src="img/icones_acervo/11_bdtd.svg">
                                     <p>Biblioteca Digital de Teses e Dissertações (BDTD)</p>
                                 </li>
                                 <li>
-                                    <img src="img/icones_acervo/12_ebook.svg" class="injetar">
+                                    <img src="img/icones_acervo/12_ebook.svg">
                                     <p>Livros eletrônicos <span lang='en'>(e-books)</span></p>
                                 </li>
                                 <li>
-                                    <img src="img/icones_acervo/13_capes.svg" class="injetar">
-                                    <p>Periódicos da CAPES</p>
+                                    <img src="img/icones_acervo/13_capes.svg">
+                                    <p>Portal Capes</p>
                                 </li>
                                 <li>
-                                    <img src="img/icones_acervo/14_ufg.svg" class="injetar">
-                                    <p>Periódicos (revistas) da UFG</p>
+                                    <img src="img/icones_acervo/14_ufg.svg">
+                                    <p>Periódicos da UFG</p>
                                 </li>
                                 <li>
-                                    <img src="img/icones_acervo/15_abnt.svg" class="injetar">
+                                    <img src="img/icones_acervo/15_abnt.svg">
                                     <p>Normas ABNT</p>
                                 </li>
                                 <li>
-                                    <img src="img/icones_acervo/16_repo_inst.svg" class="injetar">
+                                    <img src="img/icones_acervo/16_repo_inst.svg">
                                     <p>Repositório institucional</p>
                                 </li>
                             </ol>
@@ -570,29 +552,24 @@
 
 
                         <div class="texto">
-                            <p>O acervo das bibliotecas é constituído para atender os cursos oferecidos em cada câmpus da UFG. </p>
+                            <p>O acervo das bibliotecas é constituído para atender aos cursos oferecidos em cada câmpus da UFG. </p>
                             <p>Você pode contribuir na escolha dos materiais a serem comprados fazendo sugestões ao representante da sua faculdade no Conselho do Sistema de Bibliotecas. </p>
-                            <p>Veja no site da biblioteca (<a target="blank" href="https://www.bc.ufg.br">www.bc.ufg.br</a>, link Conselho do Sistema de Bibliotecas - menu inferior) quem é o representante da sua faculdade.</p>
+                            <p>Veja no site da biblioteca (<a target="blank" href="https://www.bc.ufg.br">www.bc.ufg.br</a>, link Conselho de Bibliotecas - menu inferior) quem é o representante da sua faculdade.</p>
                         </div>            
 
                         <div class="flexbox margem_nova_secao">
-                            <div class="libras hover" data-label='Vídeo de libras relativo à essa sessão' data-playing='false'>
+                            <div class="libras" aria-label='Vídeo de libras relativo à essa sessão' data-playing='false' data-resetavel='false'>
                                 <div class="cont-video">
                                     <video src="libras/libras_teste.mp4" muted autobuffer aria-hidden='true'></video>
                                     
-                                    <div class="controle">
-                                        <button title='Reproduzir vídeo da Libras' class="btplay">
-                                            <img src="img/icon_play.svg" alt="">
-                                        </button>
-
-                                        <button title='Pausar vídeo' class="btpause">
-                                            <img src="img/icon_pause.svg" alt="">
-                                        </button>
-
-                                        <button title='Recomeçar vídeo' class="btreset">
-                                            <img src="img/icon_reset.svg" alt="">
-                                        </button>
-                                    </div>
+                                    <button title='Reproduzir vídeo' data-title-play='Reproduzir vídeo' data-title-pause='Pausar vídeo' class="btplaypause">
+                                        <img src="img/icon_play.svg" alt="">
+                                        <img src="img/icon_pause.svg" alt="">
+                                    </button>
+                                    
+                                    <button title='Recomeçar vídeo' class="btreset">
+                                        <img src="img/icon_reset.svg" alt="">
+                                    </button>
 
                                     <svg aria-hidden='true' version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
                                         <circle cx="50" cy="50" r="49"/>
@@ -602,17 +579,19 @@
                             </div>
                             
                             <div class="texto">
-                                <h2>Serviços <span lang="en">on-line</span></h2>
-                                <p>Através do site da biblioteca (<a target="blank" href="https://www.bc.ufg.br">www.bc.ufg.br</a>) é possível consultar o catálogo <span lang='en'>on-line</span> dos acervos que a biblioteca possui, bem como verificar se o material está disponível ou emprestado. Siga o tutorial no site para buscas.</p>
-                                <p>Os acervos impressos podem ser consultados no link <i>Acervos na biblioteca.</i> Os digitais, no link <i>Acervos virtuais</i>.</p>
+                                <h2>Serviços <span lang="en"><i>on line</i></span></h2>
+                                <p>Através do site da biblioteca (<a target="blank" href="https://www.bc.ufg.br">www.bc.ufg.br</a>) é possível consultar o catálogo <span lang='en'><i>on line</i></span> dos acervos que a biblioteca possui, bem como verificar se o material está disponível ou emprestado. Siga o tutorial de busca no acervo.</p>
+                                <p>Os acervos impressos podem ser consultados no link <i>Acervos nas bibliotecas.</i> Os digitais, no link <i>Acervos virtuais</i>.</p>
                                 <ul>
-                                    <li>Para utilizar os serviços <span lang='en'>on-line</span> é necessário uma senha específica, que é enviada por e-mail pelo Sibi/UFG.</li>
-                                    <li>A senha para serviços <span lang='en'>on-line</span> é diferente da usada no Portal UFGNet.</li>
-                                    <li>Solicite no site do Sibi/UFG (<a target="blank" href="https://www.bc.ufg.br">www.bc.ufg.br</a>) seu login e senha para os serviços <span lang='en'>on-line.</span></li>
-                                    <li>A solicitação desta senha deve ser feita depois de concluído o cadastro na biblioteca.</li>
-                                    <li>A utilização dos serviços <span lang='en'>on-line</span> é de responsabilidade do usuário que aderir aos mesmos. Antes de começar a usar os serviços, leia a <i>Instrução Normativa</i> que é enviada juntamente com a senha.</li>
+                                    <li>Para utilizar os serviços <span lang='en'><i>on line</i></span> é necessário finalizar o cadastro na biblioteca e solicitar uma senha específica;</li>
+
+                                    <li>A solicitação da senha deve ser feita pelo Portal UFGNet/SIGAA, na aba Acadêmico;</li>
+
+                                    <li>Após a solicitação, a senha será enviada automaticamente para o e-mail cadastrado no portal UFGNet/SIGAA. Portanto, é importante manter o endereço de <span lang='en'><i>e-mail</i></span> atualizado;</li>
+
+                                    <li>A utilização dos serviços <span lang='en'><i>on line</i></span> é de responsabilidade do usuário que aderir aos mesmos. Antes de começar a usar os serviços, leia a <i>Instrução Normativa</i> que é enviada juntamente com a senha.</li>
                                 </ul>
-                                <p>Veja dicas de como melhor utilizar os serviços no link Serviços/Serviços <span lang='en'>on-line</span>, no site da biblioteca (menu superior).</p>
+                                <p>Veja dicas de como melhor utilizar os serviços no link Serviços/Serviços <span lang='en'><i>on line</i></span>, no site da biblioteca (menu superior).</p>
                             </div>
                         </div>
 
@@ -626,7 +605,7 @@
 
 
             <section id="s6">
-                <img src="img/borda-zigzag.svg" class="injetar borda">
+                <img src="img/borda6.svg" class="borda">
                 <div class="box-content">
                     <div class="content">
                         <div class="texto">
@@ -783,12 +762,12 @@
             </section>
 
             <section id="s7">
-                <img src="img/borda-zigzag.svg" class="injetar borda">
+                <img src="img/borda7.svg" class="borda">
                 <div class="box-content">
                     <div class="content">
                        <div class="texto">
-                           <h2>Regras básicas da Biblioteca</h2>
-                           <p>Assista ao vídeo abaixo para entender algumas das regras básicas para usufruto das bibliotecas do Sibi/UFG.</p>
+                           <h2>Normas básicas da Biblioteca</h2>
+                           <p>Assista ao vídeo abaixo para entender algumas das normas básicas para usufruto das bibliotecas do Sibi/UFG.</p>
                        </div>
                     </div>
                 </div>
@@ -823,7 +802,7 @@
                                 <ul>
                                     <li>A cada usuário é facultado o empréstimo domiciliar de 1 (um) exemplar de cada título; exceto quando a obra for editada em volumes (exemplo: Volume 1 e Volume 2).</li>
 
-                                    <li>A devolução do material deve ser feita na biblioteca onde ele foi retirado por empréstimo.</li>
+                                    <li>A devolução dos materiais pode ser feita por qualquer pessoa. Deve ser na biblioteca onde foi realizado o empréstimo e não é preciso apresentar a carteira de usuário.</li>
 
                                     <li>A não devolução do material na data prevista acarreta multa por item e por dia de atraso, independente da categoria do usuário.</li>
 
@@ -831,28 +810,21 @@
 
                                     <li>A renovação de materiais pode ser pela internet ou pessoalmente, na biblioteca. Neste caso, é necessário estar com a carteira de usuário da biblioteca e o material em mãos.</li>
 
-                                     <li> A devolução dos materiais pode ser feita por qualquer pessoa e não é preciso apresentar a carteira de usuário da biblioteca;</li>
-
                                 </ul>
                             </div>
 
-                            <div class="libras hover" data-label='Vídeo de libras relativo à essa sessão' data-playing='false'>
+                            <div class="libras" aria-label='Vídeo de libras relativo à essa sessão' data-playing='false' data-resetavel='false'>
                                 <div class="cont-video">
                                     <video src="libras/libras_teste.mp4" muted autobuffer aria-hidden='true'></video>
                                     
-                                    <div class="controle">
-                                        <button title='Reproduzir vídeo da Libras' class="btplay">
-                                            <img src="img/icon_play.svg" alt="">
-                                        </button>
-
-                                        <button title='Pausar vídeo' class="btpause">
-                                            <img src="img/icon_pause.svg" alt="">
-                                        </button>
-
-                                        <button title='Recomeçar vídeo' class="btreset">
-                                            <img src="img/icon_reset.svg" alt="">
-                                        </button>
-                                    </div>
+                                    <button title='Reproduzir vídeo' data-title-play='Reproduzir vídeo' data-title-pause='Pausar vídeo' class="btplaypause">
+                                        <img src="img/icon_play.svg" alt="">
+                                        <img src="img/icon_pause.svg" alt="">
+                                    </button>
+                                    
+                                    <button title='Recomeçar vídeo' class="btreset">
+                                        <img src="img/icon_reset.svg" alt="">
+                                    </button>
 
                                     <svg aria-hidden='true' version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
                                         <circle cx="50" cy="50" r="49"/>
@@ -869,11 +841,10 @@
                                 <ul>
                                     <li>O usuário é responsável por perdas e danos causados a qualquer material retirado por empréstimo ou consulta, sendo obrigatória a substituição pela mesma edição ou por uma edição mais atualizada.</li>
 
-                                    <li>O usuário em débito com a biblioteca fica impedido de:
+                                    <li>O usuário em débito com a biblioteca fica impossibilitado de:
                                         <ul>
-                                            <li>fazer empréstimos, renovar e reservar materiais;</li>
-                                            <li>realizar e renovar matrícula;</li>
-                                            <li>receber a “Declaração de Nada Consta”.</li>
+                                            <li>Fazer empréstimos, renovar e reservar materiais;</li>
+                                            <li>Receber a “Declaração de Nada Consta”.</li>
                                         </ul>
                                      </li>
 
@@ -881,29 +852,24 @@
 
                                      <li>Não há cobranças de multas relativas aos dias em que a biblioteca estiver fechada ao público. O material deve ser devolvido no primeiro dia útil seguinte.</li>
 
-                                     <li>Nos casos de fechamento da biblioteca por períodos longos, como greves, os usuários têm 10 (dez) dias úteis – independentemente do recesso acadêmico – para regularizar sua situação, sem cobrança de multas.</li>
+                                     <li>Nos casos de fechamento da biblioteca por períodos longos, os usuários têm 10 (dez) dias úteis – independentemente do recesso acadêmico – para regularizar sua situação, sem cobrança de multas.</li>
 
                                      <li>A retirada de qualquer material informacional é suspensa sempre que ocorrer falta de energia elétrica, queda da internet ou erro no acesso ao cadastro de pessoas da UFG.</li>
                                 </ul>
                             </div>
 
-                            <div class="libras hover" data-label='Vídeo de libras relativo à essa sessão' data-playing='false'>
+                            <div class="libras" aria-label='Vídeo de libras relativo à essa sessão' data-playing='false' data-resetavel='false'>
                                 <div class="cont-video">
                                     <video src="libras/libras_teste.mp4" muted autobuffer aria-hidden='true'></video>
                                     
-                                    <div class="controle">
-                                        <button title='Reproduzir vídeo da Libras' class="btplay">
-                                            <img src="img/icon_play.svg" alt="">
-                                        </button>
-
-                                        <button title='Pausar vídeo' class="btpause">
-                                            <img src="img/icon_pause.svg" alt="">
-                                        </button>
-
-                                        <button title='Recomeçar vídeo' class="btreset">
-                                            <img src="img/icon_reset.svg" alt="">
-                                        </button>
-                                    </div>
+                                    <button title='Reproduzir vídeo' data-title-play='Reproduzir vídeo' data-title-pause='Pausar vídeo' class="btplaypause">
+                                        <img src="img/icon_play.svg" alt="">
+                                        <img src="img/icon_pause.svg" alt="">
+                                    </button>
+                                    
+                                    <button title='Recomeçar vídeo' class="btreset">
+                                        <img src="img/icon_reset.svg" alt="">
+                                    </button>
 
                                     <svg aria-hidden='true' version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
                                         <circle cx="50" cy="50" r="49"/>
@@ -915,23 +881,18 @@
 
                         <div class="flexbox right">
 
-                            <div class="libras hover" data-label='Vídeo de libras relativo à essa sessão' data-playing='false'>
+                            <div class="libras" aria-label='Vídeo de libras relativo à essa sessão' data-playing='false' data-resetavel='false'>
                                 <div class="cont-video">
                                     <video src="libras/libras_teste.mp4" muted autobuffer aria-hidden='true'></video>
                                     
-                                    <div class="controle">
-                                        <button title='Reproduzir vídeo da Libras' class="btplay">
-                                            <img src="img/icon_play.svg" alt="">
-                                        </button>
-
-                                        <button title='Pausar vídeo' class="btpause">
-                                            <img src="img/icon_pause.svg" alt="">
-                                        </button>
-
-                                        <button title='Recomeçar vídeo' class="btreset">
-                                            <img src="img/icon_reset.svg" alt="">
-                                        </button>
-                                    </div>
+                                    <button title='Reproduzir vídeo' data-title-play='Reproduzir vídeo' data-title-pause='Pausar vídeo' class="btplaypause">
+                                        <img src="img/icon_play.svg" alt="">
+                                        <img src="img/icon_pause.svg" alt="">
+                                    </button>
+                                    
+                                    <button title='Recomeçar vídeo' class="btreset">
+                                        <img src="img/icon_reset.svg" alt="">
+                                    </button>
 
                                     <svg aria-hidden='true' version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
                                         <circle cx="50" cy="50" r="49"/>
@@ -943,11 +904,11 @@
                             <div class="texto">
                                 <h2>Informações importantes</h2>
                                 <ul>
-                                     <li>Para empréstimo de material é necessário ter a carteira da biblioteca da UFG. Ela é pessoal e intransferível.</li>
+                                     <li>Para empréstimo de material e uso do CIAD é necessário ter a carteira da biblioteca da UFG. Ela é pessoal e intransferível.</li>
                                      <li>A multa é uma sanção disciplinar. Não é taxa.</li>
                                      <li>O valor da multa por atraso na devolução dos materiais é de R$ 1,50 por dia e por item (desde 1999).</ >
-                                     <li>A multa e os demais débitos com a biblioteca devem ser pagos, via Guia de Recolhimento da União (GRU), no Banco do Brasil, que é gerada no site da biblioteca (<a target='blank' href="https://www.bc.ufg.br">www.bc.ufg.br</a>).</li>
-                                     <li>O não recebimento do alerta de devolução não é argumento para não pagar eventuais multas. O alerta é uma cortesia da biblioteca.</li>
+                                     <li>A multa e os demais débitos com a biblioteca devem ser pagos no Banco do Brasil via Guia de Recolhimento da União (GRU), que é gerada no site da biblioteca (<a target='blank' href="https://www.bc.ufg.br">www.bc.ufg.br</a>).</li>
+                                     <li>A ausência do recebimento do alerta de devolução não é argumento para a exclusão de eventuais multas. O alerta de devolução é uma cortesia da biblioteca.</li>
                                      <li>O Sibi/UFG recomenda que os usuários fiquem atentos às normas de uso do guarda-volumes estabelecidas em cada biblioteca.</li>
                                 </ul>
                             </div>
@@ -959,7 +920,7 @@
             </section>
 
             <section id="s10">
-                <img src="img/borda-zigzag.svg" class="injetar borda">
+                <img src="img/borda10.svg" class="borda">
                 <div class="box-content">
                     <div class="content">
                         <div class="texto">
@@ -971,7 +932,7 @@
             </section>
 
             <section id="s11">
-                <img src="img/borda-zigzag.svg" class="injetar borda">
+                <img src="img/borda11.svg" class="borda">
                 <div class="box-content">
                     <div class="content">
                         <div class="pontilhado-esq"></div>
@@ -982,7 +943,7 @@
             </section>
 
             <section id="s12">
-                <img src="img/borda-zigzag.svg" class="injetar borda">
+                <img src="img/borda12.svg" class="borda">
                 <div class="box-content">
                     <div class="content">
                         
@@ -1001,7 +962,7 @@
             </section>
 
             <section id="s13">
-                <img src="img/borda-zigzag.svg" class="injetar borda">
+                <img src="img/borda13.svg" class="borda">
                 <div class="box-content">
                     <div class="content">
                         <div class="texto">
@@ -1011,8 +972,7 @@
 
                             <div class="texto">
                                 
-                                <p>Caso não tenha o crachá de identificação da UFG, faça a carteira de usuário da biblioteca e/ou o cadastro biométrico.</p>
-                                <p>Caso deseje fazer a carteira apresente, no balcão de empréstimo:</p>
+                                <p>Para fazer a carteira da biblioteca apresente, no balcão de empréstimos:</p>
                                 <ul>
                                     <li>Documento de identificação pessoal</li>
                                     <li>Uma foto 3x4</li>
@@ -1024,20 +984,20 @@
 
                             <div class="ilustras">
                                 <div class="carteirinha">
-                                    <img src="img/ilu_fundocarteirinha.svg" class="fundorodando">
-                                    <img src="img/ilu_carteirinha.svg" class="ilucarteirinha">
+                                    <img src="img/ilu_fundocarteirinha.svg" class="fundorodando" aria-hidden='true'>
+                                    <img src="img/ilu_carteirinha.svg" class="ilucarteirinha" alt="Ilustração da carteira da biblioteca">
                                 </div>
 
                                 <div class="necessario">
                                     <div class="foto">
-                                        <img src="img/ilu_foto34.svg">
+                                        <img src="img/ilu_foto34.svg" alt='Ilustração de uma foto 3 por 4'>
                                         <p>Foto 3x4</p>
                                     </div>
 
-                                    <img class="mais" src="img/ilu_mais.svg"></img>
+                                    <img class="mais" src="img/ilu_mais.svg" alt='Símbolo de adição'></img>
 
                                     <div class="identidade">
-                                        <img src="img/ilu_identidade.svg">
+                                        <img src="img/ilu_identidade.svg" alt="Ilustração de uma carteira de identidade">
                                         <p>Documento de identificação pessoal</p>
                                     </div>
                                 </div>
@@ -1049,23 +1009,18 @@
 
                         <div class="flexbox">
 
-                            <div class="libras hover" data-label='Vídeo de libras relativo à essa sessão' data-playing='false'>
+                            <div class="libras" aria-label='Vídeo de libras relativo à essa sessão' data-playing='false' data-resetavel='false'>
                                 <div class="cont-video">
                                     <video src="libras/libras_teste.mp4" muted autobuffer aria-hidden='true'></video>
                                     
-                                    <div class="controle">
-                                        <button title='Reproduzir vídeo da Libras' class="btplay">
-                                            <img src="img/icon_play.svg" alt="">
-                                        </button>
-
-                                        <button title='Pausar vídeo' class="btpause">
-                                            <img src="img/icon_pause.svg" alt="">
-                                        </button>
-
-                                        <button title='Recomeçar vídeo' class="btreset">
-                                            <img src="img/icon_reset.svg" alt="">
-                                        </button>
-                                    </div>
+                                    <button title='Reproduzir vídeo' data-title-play='Reproduzir vídeo' data-title-pause='Pausar vídeo' class="btplaypause">
+                                        <img src="img/icon_play.svg" alt="">
+                                        <img src="img/icon_pause.svg" alt="">
+                                    </button>
+                                    
+                                    <button title='Recomeçar vídeo' class="btreset">
+                                        <img src="img/icon_reset.svg" alt="">
+                                    </button>
 
                                     <svg aria-hidden='true' version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
                                         <circle cx="50" cy="50" r="49"/>
@@ -1077,7 +1032,7 @@
                             <div class="texto">
                                 <h3>Observações sobre o cadastro na biblioteca</h3>
                                 <ul>
-                                    <li>é atualizado automaticamente quando ocorre a renovação da matrícula, pois o Sibi usa o banco de dados da UFG.</li>
+                                    <li>É atualizado automaticamente quando ocorre a renovação da matrícula, pois o Sibi usa o banco de dados da UFG.</li>
                                     <li>É pessoal e intransferível.</li>
                                     <li>Em caso de perda da carteira, comunique o fato no balcão de empréstimo da biblioteca mais próxima e solicite a 2ª via.</li>
                                 </ul>
@@ -1086,7 +1041,7 @@
                         </div>
 
                         <div class="fim texto">
-                            <h2>O Sibi/UFG agradece sua participação nesse treinamento!</h2>
+                            <h2>O Sibi/UFG agradece sua participação neste treinamento!</h2>
                             <button id="fim-treinamento">
                                 <img src="img/mascara-botao-final.svg" alt="">
                                 Concluir Treinamento
@@ -1097,7 +1052,7 @@
                 </div>
             </section>
 
-            <footer>
+            <footer aria-live='polite'>
                 <div class="box-content">
                     <div class="content">
                         <div class="flexbox">
@@ -1106,9 +1061,9 @@
                                 <dt>Telefone &#183;</dt>
                                 <dd>(62) 3521-1230</dd><br>
                                 <dt>E-mail &#183;</dt>
-                                <dd>sibi@ufg.com</dd><br>
+                                <dd class="email">atendimentosibi@gmail.com</dd><br>
                                 <dt>Facebook &#183;</dt>
-                                <dd>/bibliotecaufg</dd>
+                                <dd>/SibiUFG</dd>
                             </dl>
                             <div class="logos">
                                 <img src="img/logo_ciar.svg" 
@@ -1211,6 +1166,7 @@
         <script src='js/jquery.svgdom.min.js'></script>
         <script src='js/svg-injector.js'></script>
         <script src='js/jquery.hotkeys.js'></script>
+        <script src="js/perguntas.js"></script>
         <script src="js/app.js"></script>
 
     </body>

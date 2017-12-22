@@ -1,24 +1,12 @@
 jQuery(document).ready(function($) {
 
 
-	// 1o passo do documento: Injetar os SVGs atraves de ajax.
-	var SvgsParaInjetar = $('img.injetar');
-	SvgsParaInjetar.each(function(index, el) {
-		var i = index;
-		SVGInjector($(el), {}, function(){
-			if (i+1 === SvgsParaInjetar.length) {
-			
-				// 2o passo: depois de carregar SVGs, comecar o material.
-				comecar();
-			}
-		});
-	});
-
 	var comecar = function(){
 
 		//deixando o body visivel.
 		var corpo = $('body');
-		corpo.addClass('visivel');
+		var janelaECorpo = $('html, body');
+		// corpo.addClass('visivel');
 
 		// videos de libras
 
@@ -187,9 +175,9 @@ jQuery(document).ready(function($) {
 		btfichatecnica.on('click', function(event) {
 			$('footer').attr('aria-live', 'polite');
 			fichatecnica.addClass('db');
-			$('body').stop().animate({'scrollTop':  (
-						$('footer').offset().top > $('body').height() - $(window).height()
-						? $('body').height() - $(window).height()
+			janelaECorpo.stop().animate({'scrollTop':  (
+						$('footer').offset().top > corpo.height() - $(window).height()
+						? corpo.height() - $(window).height()
 						: $('footer').offset().top
 
 				)}, 600);
@@ -201,14 +189,14 @@ jQuery(document).ready(function($) {
 
 
 		var numeroPerguntas = 4; // # de perguntas que o usuário deve responder.
-		var data_perguntas; // var que armazena os dados de todas as perguntas. É 'populado' por Ajax.
+		var dataPerguntas = data_perguntas; // var que armazena os dados de todas as perguntas. É 'populado' por Ajax.
 		var secaoPerguntas = $('#s11 .content');
 
 		var storePerguntasEscolhidas = []; //Array que armazena o numero das perguntas que já foram escolhidas, para evitar repetição e calcular se ainda é possível gerar novas perguntas caso o usuário tenha vontade de responder o questionario novamente.
 		var daPraGerarMaisPerguntas = true; // Muda de valor quando nao sobraram perguntas o suficiente para gerar um novo questionario, e impede o geramento.
 
 		// Metodo que gera as perguntas novas.
-		var gerarPerguntas = function(){ 
+		var gerarPerguntas = function(){
 			var templatePergunta = $('\
 					<div class=\'pergunta\'>\
                         <h3 class=\'numero-pergunta\'></h3>\
@@ -233,7 +221,7 @@ jQuery(document).ready(function($) {
 					</li>\
 				');
 
-			var totalPerguntas = data_perguntas.length;
+			var totalPerguntas = dataPerguntas.length;
 			var nAleatorios = [];
 			while(nAleatorios.length < numeroPerguntas){
 				var randomnumber = Math.floor(Math.random()*totalPerguntas);
@@ -249,7 +237,7 @@ jQuery(document).ready(function($) {
 
 			for (var i = 0; i < numeroPerguntas; i++) {
 				var perguntaClone = templatePergunta.clone();
-				var perguntaDaLista = data_perguntas[nAleatorios[i]];
+				var perguntaDaLista = dataPerguntas[nAleatorios[i]];
 				var alternativas = [];
 
 				$.each(perguntaDaLista.alternativas, function(index, val) {
@@ -340,9 +328,9 @@ jQuery(document).ready(function($) {
 					$(this).remove();
 					if (index+1 === numeroPerguntas) {
 						$('#s12, #s13, footer').addClass('db');
-						$('body').stop().animate({'scrollTop': (
-							$('#s12').offset().top > $('body').height() - $(window).height() ?
-							$('body').height() - $(window).height() :
+						janelaECorpo.stop().animate({'scrollTop': (
+							$('#s12').offset().top > corpo.height() - $(window).height() ?
+							corpo.height() - $(window).height() :
 							$('#s12').offset().top
 							) }, 1000);
 						if (daPraGerarMaisPerguntas === true) {
@@ -361,9 +349,9 @@ jQuery(document).ready(function($) {
 								.find('.box-pergunta')
 								.addClass('visivel');
 						},20);
-					$('body').stop().animate({'scrollTop': (
-						perguntaRelevada.find('h3').offset().top > $('body').height() - $(window).height() ?
-						$('body').height() - $(window).height() :
+					janelaECorpo.stop().animate({'scrollTop': (
+						perguntaRelevada.find('h3').offset().top > corpo.height() - $(window).height() ?
+						corpo.height() - $(window).height() :
 						perguntaRelevada.find('h3').offset().top 
 						) }, 400);
 						
@@ -374,32 +362,25 @@ jQuery(document).ready(function($) {
 		}
 
 
-		// solicitação AJAX das perguntas. Ao carregar, chamar todas as funções relativas às perguntas.
-		$.ajax({
-			url: 'js/perguntas.json',
-			type: 'GET',
-			dataType: 'json'
-		})
-		.done(function(data) {
-			data_perguntas = data;
-			gerarPerguntas();
-			funcionamentoPerguntas();
-		});
+		gerarPerguntas();
+		funcionamentoPerguntas();
 
 		// Botão que refaz as perguntas
 		var botaoRetry = $('#retryquiz');
 		botaoRetry.on('click', function(event) {
 			var bt = $(this);
-			$('body').animate({'scrollTop': ($('#s10').offset().top) }, 1000, function(){
-				bt.closest()
-				$('#s11').find('.pergunta').remove();
-				$('#s12').find('.states').addClass('invisivel').find('.texto > p').removeClass('invisivel');
-				gerarPerguntas();
-				funcionamentoPerguntas();
-				// console.log(storePerguntasEscolhidas);
+			janelaECorpo.animate({'scrollTop': ($('#s10').offset().top) }, 1000, function(){
+				if (janelaECorpo.index($(this)) == janelaECorpo.length-1) {
+					$('#s11').find('.pergunta').remove();
+					$('#s12').find('.states').addClass('invisivel').find('.texto > p').removeClass('invisivel');
+					gerarPerguntas();
+					funcionamentoPerguntas();
+				}
 			});
 			
 		});
 		
 	}
+
+	comecar();
 });
