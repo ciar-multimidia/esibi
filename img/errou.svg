@@ -1,12 +1,1 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="50px" height="50px" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve">
-<g>
-	<polygon fill="#FFFFFF" points="25,32.931 7.931,50 0,42.069 17.069,25 0,7.931 7.931,0 25,17.069 42.069,0 50,7.931 32.931,25 
-		50,42.069 42.069,50 	"/>
-	<polygon fill="#C84E36" points="47.459,7.931 42.069,2.541 25,19.61 7.931,2.541 2.541,7.931 19.61,25 2.541,42.069 7.931,47.459 
-		25,30.391 42.069,47.459 47.459,42.069 30.391,25 	"/>
-</g>
-</svg>
+<svg fill="#fff" xmlns="http://www.w3.org/2000/svg" width="50" height="50"><path fill="#FFF" d="M25 32.931L7.931 50 0 42.069 17.069 25 0 7.931 7.931 0 25 17.069 42.069 0 50 7.931 32.931 25 50 42.069 42.069 50z"/><path fill="#C84E36" d="M47.459 7.931l-5.39-5.39L25 19.61 7.931 2.541l-5.39 5.39L19.61 25 2.541 42.069l5.39 5.39L25 30.391l17.069 17.068 5.39-5.39L30.391 25z"/></svg>

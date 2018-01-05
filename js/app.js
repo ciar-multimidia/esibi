@@ -13,6 +13,7 @@ jQuery(document).ready(function($) {
 		var videosLibras = $('.libras');
 
 		videosLibras.each(function(index, el) {
+			var essaLibras = $(el);
 			var video = $(el).find('video');
 			var progresso = $(el).find('svg > circle.progresso');
 			var buttons = $(el).find('button');
@@ -21,26 +22,56 @@ jQuery(document).ready(function($) {
 			var perimetroProgresso = parseFloat( progresso.attr('r') )*2*Math.PI;
 			var attProgresso;
 			var videoEstaRodando = false;
-			var temHover = true;
 			progresso.css({
 				'stroke-dasharray' : perimetroProgresso,
 				'stroke-dashoffset' : perimetroProgresso,
 			});
 
+
 			var atualizarProgresso = function(){
 				var fillProgresso = perimetroProgresso - (( video[0].currentTime/video[0].duration ) * perimetroProgresso);
   				progresso.css('stroke-dashoffset', fillProgresso);
   				attProgresso = requestAnimationFrame(atualizarProgresso);
-  				if (video[0].currentTime/video[0].duration >= 0.9999) {
-	  				progresso.css('stroke-dashoffset', perimetroProgresso);
-	  				cancelAnimationFrame(attProgresso);
-					$(el).attr({
-						'data-playing': 'false',
-						'data-resetavel': 'false'
-					});
-	  				videoEstaRodando = false;
-  				}
 			}
+
+			video.on('loadeddata', function(event){
+				essaLibras.addClass('loaded');
+			});
+
+			if (video[0].duration > 0) {
+				essaLibras.addClass('loaded');
+			}
+
+			video.on('waiting', function(event) {
+				essaLibras.addClass('buffering');
+				/* Act on the event */
+			});
+
+			video.on('canplay', function(event) {
+				essaLibras.removeClass('buffering');
+			});
+
+			video.on('pause', function(event) {
+				essaLibras.removeClass('playing');
+				cancelAnimationFrame(attProgresso);
+
+			});
+
+			video.on('playing', function(event) {
+				essaLibras.addClass('playing canreset');
+				attProgresso = requestAnimationFrame(atualizarProgresso);
+				
+			});
+
+			video.on('ended', function(event) {
+				video[0].pause();
+  				progresso.css('stroke-dashoffset', perimetroProgresso);
+  				cancelAnimationFrame(attProgresso);
+				essaLibras.removeClass('playing buffering canreset');
+  				videoEstaRodando = false;
+			});
+
+			
 
 			// buttons.on('focus blur', function(event) {
 				
@@ -50,45 +81,24 @@ jQuery(document).ready(function($) {
 			btplaypause.on('click', function(event) {
 				if (videoEstaRodando === false) {
 					video[0].play();
-					attProgresso = requestAnimationFrame(atualizarProgresso);
-					$(el).attr({
-						'data-playing': 'true',
-						'data-resetavel': 'true'
-					});
 					$(this).attr('title', $(this).attr('data-title-pause'));
-					temHover = false;
 					videoEstaRodando = true;
 				} else if (videoEstaRodando === true) {
 					video[0].pause();
-					$(el).attr('data-playing', 'false');
-					cancelAnimationFrame(attProgresso);
 					$(this).attr('title', $(this).attr('data-title-play'));
 					videoEstaRodando = false;
 				}
 			});
 
-			$(el).find('.cont-video').on('mousemove', function(event) {
-				if (!temHover) {
-					temHover = true;
-					setTimeout(function(){ 
-						$(el).addClass('hover');
-					},400);
-					
-				}
-			})
+
 
 
 			btreset.on('click', function(event) {
 				video[0].pause();
 				video[0].currentTime = 0;
-				progresso.css({
-					'stroke-dasharray' : perimetroProgresso,
-					'stroke-dashoffset' : perimetroProgresso,
-				});
-				$(el).attr({
-						'data-playing': 'false',
-						'data-resetavel': 'false'
-					});
+  				progresso.css('stroke-dashoffset', perimetroProgresso);
+  				cancelAnimationFrame(attProgresso);
+				essaLibras.removeClass('playing buffering canreset');
 				videoEstaRodando = false;
 				/* Act on the event */
 			});

@@ -141,7 +141,7 @@ section, footer{
 			div.libras{
 				
 				// Se nenhum tamanho for definido para o Libras usando o mixin, definir um tamanho padrao.
-				$tamanho-libras: 240px;
+				$tamanho-libras: 260px;
 				div.cont-video{
 					width: $tamanho-libras;
 					height: $tamanho-libras;
@@ -150,7 +150,19 @@ section, footer{
 					-webkit-clip-path: circle($tamanho-libras/2 at center);
 					clip-path: circle($tamanho-libras/2 at center);
 					border-radius: 50%;
-					// background-color: rgba(0,0,0,0.5);
+					@include animation(pulsaFundo 1s linear 0s infinite alternate);
+
+					@include keyframes(pulsaFundo){
+						0%{
+							background-color: rgba(0,0,0,0.3);
+						}
+
+						100%{
+							background-color: rgba(0,0,0,0.5);
+						}
+					}
+
+
 					video{
 						z-index: 0;
 						position: absolute;
@@ -158,12 +170,22 @@ section, footer{
 						height: 100%;
 						left: 50%;
 						top: 0;
-						opacity: 0;
+						// opacity: 0;
 						transform: translateX(-50%);
-						@include transition(all 0.2s linear);
+						@include transition(all 0.3s linear);
 						@include transition-property(filter, opacity);
-						@include filter(grayscale(70%));
+						// @include filter(grayscale(70%));
+					}
 
+					.blackcover{
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						background-color: black;
+						opacity: 0;
+						@include transition(opacity 0.2s linear);
 					}
 
 					button{
@@ -176,10 +198,15 @@ section, footer{
 						margin: 0;
 						@include transition(all 0.2s linear);
 						@include transition-property(opacity);
+						display: none;
+						opacity: 0;
 
 
 						&:hover{
 							cursor: pointer;
+							img{
+								@include transform(scale(1.2));
+							}
 						}
 
 						&:focus{
@@ -195,8 +222,8 @@ section, footer{
 							left: 0;
 							width: 100%;
 							height: 100%;
-							@include transition-property(background-color, opacity);
-							background-color: rgba(0, 0, 0, 0.25);
+							// @include transition-property(background-color, opacity);
+							// background-color: rgba(0, 0, 0, 0.25);
 
 							img{
 								width: 40px;
@@ -207,12 +234,9 @@ section, footer{
 								}
 							}
 
-							&:hover, &:focus{
-								background-color: rgba(0, 0, 0, 0.5);
-								img{
-									@include transform(scale(1.2));
-								}
-							}
+							// &:hover, &:focus{
+							// 	background-color: rgba(0, 0, 0, 0.5);
+							// }
 						}
 
 						&.btreset{
@@ -224,12 +248,6 @@ section, footer{
 							img{
 								width: 27px;
 								height: auto;
-							}
-
-							&:hover, &:focus{
-								img{
-									@include transform(scale(1.2));
-								}
 							}
 						}
 					}
@@ -244,17 +262,30 @@ section, footer{
 						circle{
 							fill: transparent;
 							stroke-width: 2;
-							stroke-linecap: round;
+							stroke-linecap: butt;
 							stroke: white;
 							@include transition(all 0.2s linear);
 							@include transition-property(opacity);
-							opacity: 0;
-							&.progresso{
-								
-								stroke: map-get($cores, azul);
+							opacity: 1;
+
+							&.borda{
+								@include transition-property(opacity, stroke-dasharray);
+								@include transform-origin(50% 50%);
+
 							}
+
+
+							&.progresso{	
+								stroke: map-get($cores, azul);
+								opacity: 0;
+							}
+
+
 							&.buffer{
-								stroke-dasharray: 12, 12;
+								opacity: 0;
+								
+								stroke-dasharray: 102 300;
+									
 								@include transform-origin(50% 50%);
 								@include keyframes(buffering){
 									
@@ -262,74 +293,125 @@ section, footer{
 										@include transform(rotate(360deg));
 									}
 								}
-								animation: buffering 5s linear 0s infinite;
+
+								@include animation (buffering 1s linear 0s infinite normal both);
 							}
 						}
 					}
 				}
 
-				&.loaded > .cont-video{
-					video{
-						opacity: 1;
-					}
-				}
-
-				
-
-				
-
-				&[data-playing='true']{
-					.cont-video{
-						video{
-							@include filter(grayscale(0%));
-
-						}
+				&.loaded{
+					& > .cont-video{
+						@include animation(none);
 						button{
-							
-							&.btplaypause{
-								opacity: 0;
-								background-color: rgba(0, 0, 0, 0.5);
-
-								img:nth-child(1){
-									display: none;
-								}
-								img:nth-child(2){
-									display: inline;
-								}
-							}
+							display: block;
+							opacity: 1;
+						}
+						video{
+							opacity: 1;
 						}
 
-						&:hover{
+						.blackcover{
+							opacity: 0.5;
+						}
+
+						&:hover .blackcover{
+							opacity: 0.7;
+						}
+
+						svg{
+							circle.progresso{
+								opacity: 1;
+							}
+						}
+					}
+
+					&.playing {
+
+						.cont-video{
+							video{
+								@include filter(grayscale(0%));
+							}
+
+							.blackcover{
+								opacity: 0;
+							}
+
 							button{
 								&.btplaypause{
-									opacity: 1;
+									opacity: 0;
+									// background-color: rgba(0, 0, 0, 0.5);
+
+									img:nth-child(1){
+										display: none;
+									}
+									img:nth-child(2){
+										display: inline;
+									}
 								}
 
+								&.btreset{
+									opacity: 0;
+								}
+							}
+
+
+							&:hover{
+								.blackcover{
+									opacity: 0.7;
+								}
+								button{
+									&.btplaypause{
+										opacity: 1;
+									}
+
+									&.btreset{
+										opacity: 1;
+									}
+								}
+							}							
+						}
+
+						&.buffering > .cont-video{
+
+							.blackcover{
+								opacity: 0.7;
+							}
+							svg{
+								circle{
+									&.borda{
+										stroke-dasharray: 102 300;
+										@include keyframes(buffering){
+											100%{
+												@include transform(rotate(360deg));
+											}
+										}
+										@include animation (buffering 1s linear 0s infinite normal both);
+									}
+									&.progresso{
+										opacity: 0;
+									}
+									// &.buffer{
+									// 	opacity: 1;
+									// }
+								}
 							}
 						}
 					}
-				}
 
-				&[data-resetavel='true']{
-					.cont-video{
+					&.canreset > .cont-video{
 						button{
 							&.btreset{
 								display: block;
-								opacity: 0;
-							}
-						}
-
-						&:hover{
-							button{
-								&.btreset{
-									opacity: 1;
-								}
-
 							}
 						}
 					}
-				}
+				}					
 			}
+
+
+
+			
 
 			.texto{
 				font-family: $fonte-corpo;
@@ -875,14 +957,32 @@ img#logointro{
 					margin-top: 4em;
 					text-align: center;
 					width: 30%;
+					position: relative;
+					counter-increment: servicosOferecidos;
+
+					
 					img{
 						height: 4.5em;
 						width: auto;
 						margin-bottom: 1em;
+						
 					}
 					h4{
 						font-size: 1em;
 						margin-bottom: 0.4em;
+
+						&:before{
+							content: counter(servicosOferecidos);
+							display: inline-block;
+							background-color: black;
+							color: map-get($cores, turquesa);
+							// font-size: 0.8em;
+							line-height: 1;
+							font-weight: bold;
+							margin-right: 0.5em;
+							padding: 2px 4px;
+							border-radius: 2px;
+						}
 
 					}
 				}
@@ -1155,6 +1255,7 @@ img#logointro{
 		height: 100%;
 		left: 50%;
 		top: 0;
+		z-index: 2;
 
 	}
 
@@ -1280,13 +1381,13 @@ img#logointro{
 	div.box-content{
 		background-color: map-get($cores, amarelo);
 		.texto{
-			width: 100%;
+			// width: 100%;
 		}
 		h2{
 			font-weight: normal;
-			text-align: center;
+			// text-align: center;
 			color: black; 
-			font-size: 2em;
+			font-size: 1.6em;
 			line-height: 1.3;
 			margin: 0;
 			span{
@@ -1298,8 +1399,8 @@ img#logointro{
 
 		p{
 			width: 640px;
-			text-align: center;
-			margin: 0 auto;
+			// text-align: center;
+			// margin: 0 auto;
 		}
 
 	}
@@ -1728,11 +1829,17 @@ img#logointro{
 			@include display(flex);
 			@include justify-content(space-between);
 			@include align-items(flex-start);
+			&.margem-topo{
+				margin-top: 3em;
+			}
 			.ilustras{
 				@include display(flex);
 				@include justify-content(center);
 				@include flex-wrap(wrap);
-				width: 48%;
+				&.carteirinhafinal{
+					width: 270px;
+				}
+				// width: 48%;
 				.carteirinha{
 					position: relative;
 					img{
@@ -1770,11 +1877,16 @@ img#logointro{
 					@include align-items(flex-start);
 					& > img{
 						margin: 36px 1em 0;
-
 					}
-					& > div{
+					& > li{
+						margin: 0;
+						padding: 0;
+						list-style-type: none;
 						max-width: 45%;
 						text-align: center;
+						&:before{
+							content: none;
+						}
 						img{
 							height: 100px;
 							width: auto;
@@ -1788,7 +1900,7 @@ img#logointro{
 
 
 			.texto{
-				width: 48%;
+				// width: 48%;
 				h2, h3{
 					color: $turquesa-escuro;
 				}
