@@ -271,13 +271,14 @@ section, footer{
 							&.borda{
 								@include transition-property(opacity, stroke-dasharray);
 								@include transform-origin(50% 50%);
-
 							}
 
 
 							&.progresso{	
 								stroke: map-get($cores, azul);
 								opacity: 0;
+								stroke-width: 2.2;
+
 							}
 
 
@@ -470,11 +471,11 @@ section, footer{
 @mixin coresLibras($borda, $progresso){
 	div.libras{
 		svg{
-			circle{
+			.borda{
 				stroke: $borda;
-				&.progresso{
+			}
+			.progresso{
 					stroke: $progresso;
-				}
 			}
 		}
 	}
@@ -601,6 +602,8 @@ img#logointro{
 				height: 40px;
 				border-right: 3px dashed white;
 			}
+
+			
 		}
 		div.content{
 			div.texto{
@@ -1152,6 +1155,18 @@ img#logointro{
 				}
 
 			}
+
+			div.libras{
+				svg{
+					.borda{
+						stroke: map-get($cores, vermelho);
+					}
+
+					.progresso{
+						stroke: white;
+					}
+				}
+			}
 		}
 
 	}
@@ -1175,6 +1190,17 @@ img#logointro{
 	div.box-content{
 		background-color:  map-get($cores, azul);
 		color: white;
+
+		div.libras{
+			svg{
+				.borda{
+
+				}
+				.progresso{
+					stroke: map-get($cores, vermelho);
+				}
+			}
+		}
 
 	}
 }
@@ -1804,7 +1830,7 @@ img#logointro{
 #s13{
 	display: none;
 
-	@include coresLibras($turquesa-escuro, map-get($cores, amarelo));
+	@include coresLibras($turquesa-escuro, white);
 
 	&.db{
 		display: block;
@@ -1853,15 +1879,15 @@ img#logointro{
 						}
 					}
 					img.fundorodando{
-						height: 320px;
-						width: auto;
+						height: auto;
+						width: 100%;
 						@include animation(rodandodenovo 60s linear 0s infinite normal forwards running);
 
 					}
 
 					img.ilucarteirinha{
 						position: absolute;
-						height: 120px;
+						height: 100px;
 						width: auto;
 						top: 50%;
 						left: 50%;
