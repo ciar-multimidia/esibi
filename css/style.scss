@@ -86,6 +86,10 @@ section, footer{
 		min-width: $width-conteudo;
 		height: auto;
 		position: relative;
+		@include user-select(none);
+		pointer-events: none;
+		user-drag: none; 
+		-webkit-user-drag: none;
 	}
 
 	.box-content{

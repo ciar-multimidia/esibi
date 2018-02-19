@@ -58,9 +58,9 @@ var data_perguntas = [
 
 
 	{
-		"enunciado": "Estou com 3 livros da Biblioteca de Letras e Linguística (BSLL) e preciso devolvê-los na data de hoje, porém estou impossibilitado de ir até o Campus. Posso pedir que um amigo entregue para mim?",
+		"enunciado": "Estou com 3 livros da Biblioteca de Letras e Linguística (BSLL) e preciso devolvê-los na data de hoje, porém estou impossibilitado de ir até o Câmpus. Posso pedir que um amigo entregue para mim?",
 
-		"texto_auxiliar": "As devoluções podem ser realizadas por terceiros, caso seja necessário, porém a renovação e o empréstimo só podem ser feito pelo próprio usuário portando a carteira da biblioteca.",
+		"texto_auxiliar": "As devoluções podem ser realizadas por terceiros, caso seja necessário, porém a renovação e o empréstimo só podem ser feitos pelo próprio usuário portando a carteira da biblioteca.",
 
 		"alternativas": [
 			{
