@@ -1136,11 +1136,20 @@
 
                         <div class="fim texto">
                             <h2>O Sibi/UFG agradece sua participação neste treinamento!</h2>
-                            <button id="fim-treinamento">
-                                <img src="img/mascara-botao-final.svg" alt="">
-                                Concluir Treinamento
-                                <img src="img/mascara-botao-final.svg" alt="">
+                            <button id="fim-treinamento" title='Finalizar treinamento'>
+                                <span aria-hidden='true'>Finalizar Treinamento</span>
+                                <img class="sucessoFim" aria-hidden='true' src="img/acertou-branco.svg">
                             </button>
+
+
+
+                            <section class="msgs-fim" role='status'>
+                                <p class="processando">Processando...</p>
+                                <p class="msgfinal"></p>
+                                <a href="https://ufgnet.ufg.br/" class='link-voltar-portal'>&#9664; Voltar ao Portal</a>
+                            </section>
+
+
                         </div>
                     </div>
                 </div>

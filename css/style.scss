@@ -1983,44 +1983,149 @@ img#logointro{
 			}
 
 			button{
+				overflow: hidden;
 				@include appearance(none);
+				margin: 0;
+				padding: 0;
 				border: 0px solid transparent;
 				background-color: map-get($cores, turquesa);
+				width: 400px;
+				height: 90px;
+				-webkit-clip-path: 	polygon(0% 50%, 10% 0%, 90% 0%,100% 50%,90% 100%,10% 100%);
+				clip-path: 			polygon(0% 50%, 10% 0%, 90% 0%,100% 50%,90% 100%,10% 100%);
 				font-size: 1.3em;
 				font-family: $fonte-corpo;
-				padding: 1.4em 4em;
-				margin: 0;
 				position: relative;
-				@include transition(transform 0.1s linear);
+				@include transition(all 0.2s ease-in-out);
+				@include transition-property(
+					transform,
+					background-color,
+					clip-path,
+					-webkit-clip-path,
+					width,
+					border-radius,
+					opacity
+				);
 
-				img{
+				span{
+					width: 400px;
 					display: block;
-					position: absolute;
-					@include user-select(none);
-					top: -2px;
-					height: calc(100% + 4px);
-					&:first-of-type{
-						left: -1px;
-					}
-					&:last-of-type{
-						right: -1px;
-						@include transform(rotate(180deg));
-					}
 				}
 
-				&:before, &:after{
-					content: '';
-					display: inline;
+				img.sucessoFim{
+					height: 40px;
+					width: 40px;
+					display: none;
 				}
 
 				&:focus{
 					outline: 0px solid transparent;
 				}
 
-				&:hover{
+				&:not(.loading):not([disabled]):hover{
 					cursor: pointer;
 					@include transform(scale(1.04));
 				}
+
+				@include keyframes(doneSpin){
+					100%{
+						@include transform(rotate(360deg));
+					}
+				}
+
+				@include keyframes(doneColors){
+					25%{
+						background-color: map-get($cores, vermelho);
+					}
+
+					50%{
+						background-color: map-get($cores, amarelo);
+					}
+
+					75%{
+						background-color: map-get($cores, azul);
+					}
+
+					100%{
+						background-color: map-get($cores, turquesa);
+					}
+				}
+
+				&.loading{
+					cursor: pointer;
+					-webkit-clip-path: 	polygon(0% 50%, 50% 0%, 50% 0%,100% 50%,50% 100%,50% 100%);
+					clip-path: 			polygon(0% 50%, 50% 0%, 50% 0%,100% 50%,50% 100%,50% 100%);
+					width: 90px;
+					span{
+						display: none;
+					}
+
+					@include animation(	doneSpin 	1s linear 0.2s infinite normal both,
+										doneColors 	1s linear 0.2s infinite normal both);
+				}
+
+				
+
+				&[disabled]:not(.loading){
+					opacity: 0.5;
+					width: 90px;
+					-webkit-clip-path: 	polygon(0% 50%, 50% 0%, 50% 0%,100% 50%,50% 100%,50% 100%);
+					clip-path: 			polygon(0% 50%, 50% 0%, 50% 0%,100% 50%,50% 100%,50% 100%);
+					background-color: grey;
+					span{
+						color: white;
+					}
+
+					&.done{
+						opacity: 1;
+						span{display: none;}
+						background-color: #1F6245;
+						.sucessoFim{
+							display: inline;
+						}
+					}
+				}
+
+
+			}
+
+			@include keyframes(revelaMsg){
+				0%{
+					opacity: 0;
+					@include transform(translateY(-1em));
+				}
+				100%{
+					opacity: 1;
+					@include transform(translateY(0em));
+				}
+			}
+
+			.msgs-fim{
+				min-width: 0;
+				width: 640px;
+				min-height: 120px;
+				position: relative;
+				padding-top: 1em;
+				// @include display(flex);
+				// @include justify-content(center);
+				// @include align-items(center);
+				p, a{
+					text-align: center;
+					display: none;
+					&.ativo{
+						display: block;
+						@include animation(revelaMsg 0.3s ease-out 0.1s 1 normal both);
+						&.link-voltar-portal{
+							@include animation-delay(0.4s);
+						}
+					}
+
+					&.aviso{
+						color: map-get($cores, vermelho);
+					}
+				}
+
+				
 			}
 		}
 	}

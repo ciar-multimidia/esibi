@@ -3,12 +3,17 @@ jQuery(document).ready(function($) {
 
 	var comecar = function(){
 
-		//deixando o body visivel.
+
 		var corpo = $('body');
 		var janelaECorpo = $('html, body');
-		// corpo.addClass('visivel');
 
-		// videos de libras
+
+
+
+
+
+
+		// @@@@@@ VIDEOS DE LIBRAS @@@@@@
 
 		var videosLibras = $('.libras');
 
@@ -72,7 +77,6 @@ jQuery(document).ready(function($) {
 			});
 
 			
-
 			// buttons.on('focus blur', function(event) {
 				
 			// 	/* Act on the event */
@@ -91,8 +95,6 @@ jQuery(document).ready(function($) {
 			});
 
 
-
-
 			btreset.on('click', function(event) {
 				video[0].pause();
 				video[0].currentTime = 0;
@@ -107,7 +109,15 @@ jQuery(document).ready(function($) {
 
 		});
 
-		// Interatividade do mapa
+
+
+
+
+
+
+
+		// @@@@@@ INTERATIVIDADE DO MAPA @@@@@@
+
 
 		var listaCidades = $('#mapa-interativo .cidades > div');
 		var containerMapa = $('#mapa-interativo .container-mapa');
@@ -124,7 +134,17 @@ jQuery(document).ready(function($) {
 			listaCidades.filter('[data-cidade=\''+datacidade+'\']').toggleClass('destaque');
 		});
 
-		//Fazendo o select dos tipos de usuario mudarem os dados da tabela. 
+
+
+
+
+
+
+
+
+
+		// @@@@@@ FAZENDO O SELECT DOS TIPOS DE USUARIO MUDAREM OS DADOS DA TABELA @@@@@@
+
 		var tiposDeUsuario = $('#tiposDeUsuario');
 		var tabelaPrazosQtdes = $('#prazosQtdes');
 
@@ -178,7 +198,12 @@ jQuery(document).ready(function($) {
 
 		
 
-		// botao ficha tecnica revela a ficha tecnica e rola para ela.
+
+
+
+
+		// @@@@@@ BOTAO FICHA TECNICA REVELA A FICHA TECNICA E ROLA PARA ELA @@@@@@
+
 		var btfichatecnica = $('footer button.fichatecnica');
 		var fichatecnica = $('#fichatecnica');
 
@@ -195,18 +220,22 @@ jQuery(document).ready(function($) {
 		});
 
 
-		// Metodo para gerar as perguntas
 
 
-		var numeroPerguntas = 4; // # de perguntas que o usuário deve responder.
-		var dataPerguntas = data_perguntas; // var que armazena os dados de todas as perguntas. É 'populado' por Ajax.
+
+
+		// @@@@@@ CRIACAO DE PERGUNTAS @@@@@@
+
+		var numeroPerguntas = 4; // numero de perguntas que o usuário deve responder.
+		var dataPerguntas = data_perguntas; // var que armazena os dados de todas as perguntas. Está num arquivo JS externo.
 		var secaoPerguntas = $('#s11 .content');
 
-		var storePerguntasEscolhidas = []; //Array que armazena o numero das perguntas que já foram escolhidas, para evitar repetição e calcular se ainda é possível gerar novas perguntas caso o usuário tenha vontade de responder o questionario novamente.
-		var daPraGerarMaisPerguntas = true; // Muda de valor quando nao sobraram perguntas o suficiente para gerar um novo questionario, e impede o geramento.
+		var storePerguntasEscolhidas = []; //Array que armazena o numero das perguntas que já foram escolhidas, para evitar repetição e calcular se ainda é possível gerar novas perguntas caso o usuário escolha responder o questionario novamente.
+		var daPraGerarMaisPerguntas = true; // Muda para 'false' quando nao sobraram perguntas o suficiente para gerar um novo questionario, e impede o geramento.
 
 		// Metodo que gera as perguntas novas.
 		var gerarPerguntas = function(){
+
 			var templatePergunta = $('\
 					<div class=\'pergunta\'>\
                         <h3 class=\'numero-pergunta\'></h3>\
@@ -223,6 +252,7 @@ jQuery(document).ready(function($) {
                         </fieldset>\
                     </div>\
 				');
+
 			var templateOpcao = $('\
 					<li>\
 						<input type=\'checkbox\' name=\'\' id=\'\'>\
@@ -241,7 +271,7 @@ jQuery(document).ready(function($) {
 			}
 
 			if (totalPerguntas - storePerguntasEscolhidas.length < numeroPerguntas ) {
-				console.log('Faltam',totalPerguntas - storePerguntasEscolhidas.length, 'perguntas, precisava de', numeroPerguntas, 'para gerar mais um quiz');
+				// console.log('Faltam',totalPerguntas - storePerguntasEscolhidas.length, 'perguntas, precisava de', numeroPerguntas, 'para gerar mais um quiz');
 				daPraGerarMaisPerguntas = false;
 			}
 
@@ -299,7 +329,12 @@ jQuery(document).ready(function($) {
 
 		}
 
-		// metodo que aplica toda a funcionalidade das perguntas
+
+
+
+
+		// @@@@@@ METODO QUE APLICA TODA A FUNCIONALIDADE DAS PERGUNTAS @@@@@@
+
 		var funcionamentoPerguntas = function(){
 			secaoPerguntas = $('#s11 .content');
 			var perguntasDom = secaoPerguntas.find('.pergunta');
@@ -371,11 +406,16 @@ jQuery(document).ready(function($) {
 
 		}
 
-
 		gerarPerguntas();
 		funcionamentoPerguntas();
 
-		// Botão que refaz as perguntas
+
+
+
+
+
+		// @@@@@@ BOTÃO QUE REFAZ AS PERGUNTAS @@@@@@
+
 		var botaoRetry = $('#retryquiz');
 		botaoRetry.on('click', function(event) {
 			var bt = $(this);
@@ -389,7 +429,98 @@ jQuery(document).ready(function($) {
 			});
 			
 		});
+
+
+
+
+
+
+		// @@@@@@ FUNCIONALIDADE PARA CONCLUSÃO DO CURSO @@@@@@
+
+		var $btConcluir = $('#fim-treinamento'); // botão de conclusão
+		var $pMsgProcessando = $('.msgs-fim > .processando'); // mensagem indicando que está sendo processado o pedido
+		var $pMsgFinal = $('.msgs-fim > .msgfinal'); // tag p que conterá a mensagem final, indicando o resultado do ajax.
+		var $linkVoltarPortal = $('.msgs-fim > .link-voltar-portal'); // Link que volta para o Portal.
+
+
+		var urlConclusao = 'test.txt'; // É aqui que ficará armazenado a URL que será consultada para concluir o curso.
+		var tempoMinAnimLoading = 2000 // Tempo mínimo para a animação de loading ocorrer. 2000 = 2 segundos.
+		var titleOriginalBt = $btConcluir.attr('title'); // Armazenando title original do botao
+
+
+
+		// Objeto contendo todas as mengagens. As mensagens de sucesso e erro são padrões e devem existir. Caso existam situações que exijam outras mensagens, fica a vontade para acrescentar mais.
+		var msgsPossiveis = {
+			sucesso: 'Sucesso! Você pode agora se cadastrar no Sistema de Bibliotecas da UFG.',
+			erro: 'Um problema técnico impediu a validação.<br>Verifique sua conexão com a internet e tente novamente, ou entre em contato com o Cercomp.',
+			impedido: 'Alguma pendência com a UFG está impedindo a validação do seu curso. <br>Entre em contato com a Biblioteca para mais informações.'
+		}
+
+
 		
+		// Toda a chamada Ajax está dentro do evento de clicar no botão, mesmo. 
+		$btConcluir.on('click', function(event) {
+
+			var $thisBt = $(this);
+			var tempoAntesClicar = new Date().getTime(); // serve para calcular quanto tempo o ajax levou.
+			var msgFinal = ''; // Armazena a chave do objeto contendo as msgs possiveis.
+			$pMsgProcessando.addClass('ativo');
+			$pMsgFinal.removeClass('ativo aviso');
+			$linkVoltarPortal.removeClass('ativo');
+			
+			$thisBt
+			.attr({'disabled': 'disabled','title': 'Processando validação'}).addClass('loading'); // Ativa a animação de loading
+
+			// ajax
+			var ajaxConclusao = $.ajax({
+				url: urlConclusao,
+				type: 'GET'
+			})
+
+			// Esse é o método chamado caso a solicitação AJAX funcione. 
+			// 'data' é a variavel que armazena o que foi baixado pelo AJAX. Aqui no meu exemplo, é um txt, entao o 'data' tem um mero valor de string
+			// Eu não sei se existem condições que impeça o usuário de finalizar o curso. Caso exista, é só re-escrever esse .done de acordo. Eu já escrevi um exemplo abaixo.
+			.done(function(data) {
+				if (data === 'Sucesso') {
+					msgFinal = 'sucesso';
+				}else {
+					msgFinal = 'impedido';
+				}
+			})
+
+
+			// 'fail' é APENAS falha no ajax. Nao tem NADA a ver com 
+			.fail(function(data) {
+				usuarioPodeTentarDeNovo = true;
+				msgFinal = 'erro';
+			})
+			.always(function() {
+				// Existe um tempo mínimo que a animação de "loading" vai acontecer, independente de quanto tempo o Ajax levar. Isso acontecerá por motivos de usabilidade, mesmo. A variavel logo abaixo e o Timeout no final já faz todas as contas para garantir esse tempo minimo.
+				var tempoAnimFinal = tempoMinAnimLoading - (new Date().getTime() - tempoAntesClicar); 
+				var timeoutFimAnim = setTimeout(function(){
+					
+					$thisBt.removeClass('loading').attr('title', titleOriginalBt);
+
+					if (msgFinal === 'sucesso') {
+						$thisBt.addClass('done').attr('title', 'Você concluiu o curso!');
+					} 
+
+					else if (msgFinal === 'impedido'){
+						$pMsgFinal.addClass('aviso');
+					} 
+
+					else if (msgFinal === 'erro') {
+						$thisBt.removeAttr('disabled');
+						$pMsgFinal.addClass('aviso');
+					}
+
+					$pMsgProcessando.removeClass('ativo');
+					$pMsgFinal.html(msgsPossiveis[msgFinal]).addClass('ativo');
+					$linkVoltarPortal.addClass('ativo');
+				}, (tempoAnimFinal > 0 ? tempoAnimFinal : 0) );
+			});
+			
+		});
 	}
 
 	comecar();
