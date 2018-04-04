@@ -435,88 +435,145 @@ jQuery(document).ready(function($) {
 
 
 
-		// @@@@@@ FUNCIONALIDADE PARA CONCLUSÃO DO CURSO @@@@@@
+		// @@@@@@ JANELA AVISANDO QUE A PESSOA JÁ FEZ O TREINAMENTO @@@@@@
+
+		var $dialogJaFezTreinamento = $('#jafezotreinamento');
+
+		if ($dialogJaFezTreinamento) {
+			var tempoProAvisoAparecer = 2500;
+			setTimeout(function(){
+				$dialogJaFezTreinamento.addClass('db');
+				$dialogJaFezTreinamento.find('button').focus().on('click', function(event) {
+				$dialogJaFezTreinamento.remove();
+			});
+			},tempoProAvisoAparecer);
+		}
+
+
+
+
+
+
+		// @@@@@@ FUNCIONALIDADE PARA CONCLUSÃO DO TREINAMENTO @@@@@@
 
 		var $btConcluir = $('#fim-treinamento'); // botão de conclusão
+		var $containerMsgs = $('.msgs-fim'); // container de todas as msgs
 		var $pMsgProcessando = $('.msgs-fim > .processando'); // mensagem indicando que está sendo processado o pedido
 		var $pMsgFinal = $('.msgs-fim > .msgfinal'); // tag p que conterá a mensagem final, indicando o resultado do ajax.
 		var $linkVoltarPortal = $('.msgs-fim > .link-voltar-portal'); // Link que volta para o Portal.
 
-
-		var urlConclusao = 'test.txt'; // É aqui que ficará armazenado a URL que será consultada para concluir o curso.
-		var tempoMinAnimLoading = 2000 // Tempo mínimo para a animação de loading ocorrer. 2000 = 2 segundos.
-		var titleOriginalBt = $btConcluir.attr('title'); // Armazenando title original do botao
-
-
-
+	
 		// Objeto contendo todas as mengagens. As mensagens de sucesso e erro são padrões e devem existir. Caso existam situações que exijam outras mensagens, fica a vontade para acrescentar mais.
 		var msgsPossiveis = {
-			sucesso: 'Sucesso! Você pode agora se cadastrar no Sistema de Bibliotecas da UFG.',
-			erro: 'Um problema técnico impediu a validação.<br>Verifique sua conexão com a internet e tente novamente, ou entre em contato com o Cercomp.',
-			impedido: 'Alguma pendência com a UFG está impedindo a validação do seu curso. <br>Entre em contato com a Biblioteca para mais informações.'
+			sucesso: 'Sucesso! Você pode agora solicitar sua carteira do <br>Sistema de Bibliotecas da UFG.',
+			erro_conexao: 'Algo deu errado!<br>Verifique sua conexão com a internet e tente novamente.',
+			erro_processamento: 'Um problema técnico impediu a validação. Tente novamente mais tarde. <br>Se o problema persistir, entre em contato com o suporte técnico do Cercomp através do Portal UFGNet.'
 		}
 
+
+		// Método que muda o estado do botão e das mensagens. O unico argumento pode receber 4 valores diferentes, como listado abaixo:
+		// 1. 'processando' - A conclusão do treinamento está sendo processado. É o "loading".
+		// 2. 'sucesso' - A conclusão foi bem sucedida.
+		// 3. 'erro_conexao' - Não deu certo por erro de conexao com o servidor.
+		// 4. 'erro_processamento' - Erro no servidor. O ajax deu certo, mas a validação nao.
+		var mudarEstadoConclusao = function(estado){
+			var alturaAnterior = $containerMsgs.outerHeight(); // pegando a altura do container das msgs antes dele receber a mensagem
+			$containerMsgs.css('height', ''); // Tirando a altura aplicada inline, para que a altura do container seja calculada automaticamente
+			
+			if (estado === 'processando') {
+				$pMsgProcessando.addClass('ativo');
+				$pMsgFinal.removeClass('ativo aviso');
+				$linkVoltarPortal.removeClass('ativo');
+				$btConcluir.attr({'disabled': 'disabled','title': 'Processando validação'}).addClass('loading'); 
+			} else{
+
+				$btConcluir.removeClass('loading').attr('title', titleOriginalBt);
+				$pMsgProcessando.removeClass('ativo');
+				var msgConclusao = '';
+
+				if (estado === 'sucesso') {
+					$btConcluir.addClass('done').attr('title', 'Você concluiu o treinamento!');
+					$linkVoltarPortal.addClass('ativo');
+				} 
+
+				else if (estado === 'erro_conexao'){
+					$btConcluir.removeAttr('disabled');
+					$pMsgFinal.addClass('aviso');
+				}
+
+				else if (estado === 'erro_processamento'){
+					$btConcluir.removeAttr('disabled');
+					$linkVoltarPortal.addClass('ativo');
+					$pMsgFinal.addClass('aviso');
+				}
+
+				else{
+
+				}
+
+				$pMsgFinal.html(msgsPossiveis[estado]).addClass('ativo');
+			}
+
+			var alturaFutura = $containerMsgs.outerHeight(); // Agora que os filhos foram alterados, a altura do container tambem foi, e aqui é armazenada essa nova altura
+			$containerMsgs.css('height', alturaAnterior+'px').animate({'height': alturaFutura+'px'}, 200); // animando da altura antiga para a futura!
+		}
+
+
+		var urlConclusao = 'test.txt'; // URL que será consultada para concluir o treinamento.
+		var tempoMinAnimLoading = 2000 // Tempo mínimo para a animação de loading ocorrer. 2000 = 2 segundos. Está esclarecido mais abaixo.
+		var titleOriginalBt = $btConcluir.attr('title'); // Armazenando title original do botao
 
 		
 		// Toda a chamada Ajax está dentro do evento de clicar no botão, mesmo. 
 		$btConcluir.on('click', function(event) {
 
-			var $thisBt = $(this);
-			var tempoAntesClicar = new Date().getTime(); // serve para calcular quanto tempo o ajax levou.
-			var msgFinal = ''; // Armazena a chave do objeto contendo as msgs possiveis.
-			$pMsgProcessando.addClass('ativo');
-			$pMsgFinal.removeClass('ativo aviso');
-			$linkVoltarPortal.removeClass('ativo');
-			
-			$thisBt
-			.attr({'disabled': 'disabled','title': 'Processando validação'}).addClass('loading'); // Ativa a animação de loading
+			var tempoMomentoClique = new Date().getTime(); // serve para calcular quanto tempo o ajax levou.
+			var estadoFinal = ''; // Armazena o estado, para poder chamar o metodo de mudança de estado de conclusao
 
-			// ajax
+			mudarEstadoConclusao('processando');
+
+			// >>> AJAX <<<
 			var ajaxConclusao = $.ajax({
 				url: urlConclusao,
 				type: 'GET'
-			})
+			});
 
 			// Esse é o método chamado caso a solicitação AJAX funcione. 
 			// 'data' é a variavel que armazena o que foi baixado pelo AJAX. Aqui no meu exemplo, é um txt, entao o 'data' tem um mero valor de string
-			// Eu não sei se existem condições que impeça o usuário de finalizar o curso. Caso exista, é só re-escrever esse .done de acordo. Eu já escrevi um exemplo abaixo.
-			.done(function(data) {
-				if (data === 'Sucesso') {
-					msgFinal = 'sucesso';
-				}else {
-					msgFinal = 'impedido';
+			// Eu não sei se existem condições que impeça o usuário de finalizar o treinamento. Caso exista, é só re-escrever esse .done de acordo. 
+			ajaxConclusao.done(function(data) {
+				estadoFinal = 'sucesso';
+			})
+
+			// Esse é o método de falha do AJAX.
+			// Eu fiz o seguinte: Se o readystate é 0, quer dizer que o Ajax nem começou, que quer dizer que foi problema de conexao, portanto, o usuário deve tentar de novo.
+			// Se o readystate é 4 e ainda assim ocorreu algum erro, quer dizer que o Ajax teve sucesso, mas os dados retornados não é valido, entao o erro é no sistema.
+			// Qualquer outro readystate diferente de 0 ou 4 é um erro do navegador, ou algo mais maluco que isso, entao é erro do sistema mesmo.
+			ajaxConclusao.fail(function(jqXHR, textStatus, errorThrown) {
+				if (jqXHR.readyState === 4) {
+					estadoFinal = 'erro_processamento';
+				} else if (jqXHR.readyState === 0) {
+					estadoFinal = 'erro_conexao';
+				} else{
+					estadoFinal = 'erro_processamento';
 				}
+				console.log(jqXHR);
 			})
 
+			// Qualquer resultado do ajax é sempre refletido aqui no .always, e não nos eventos anteriores.
+			ajaxConclusao.always(function() {
 
-			// 'fail' é APENAS falha no ajax. Nao tem NADA a ver com 
-			.fail(function(data) {
-				usuarioPodeTentarDeNovo = true;
-				msgFinal = 'erro';
-			})
-			.always(function() {
-				// Existe um tempo mínimo que a animação de "loading" vai acontecer, independente de quanto tempo o Ajax levar. Isso acontecerá por motivos de usabilidade, mesmo. A variavel logo abaixo e o Timeout no final já faz todas as contas para garantir esse tempo minimo.
-				var tempoAnimFinal = tempoMinAnimLoading - (new Date().getTime() - tempoAntesClicar); 
+				// IMPORTANTE
+				// Independente do tempo que o Ajax levar, que provavelmente vai ser sempre muito rapido, por motivos de USABILIDADE, a animação de 'processando' vai sempre ter uma duração mínima.
+				// Isso já está resolvido abaixo.
+				console.log(((new Date().getTime() - tempoMomentoClique)/1000)+'s que o Ajax levou');
+				
+				var tempoAnimFinal = tempoMinAnimLoading - (new Date().getTime() - tempoMomentoClique); // Tempo mínimo menos o tempo que o ajax levou. Essa substração é colocada no timeout para completar o tempo mínimo. 
+
 				var timeoutFimAnim = setTimeout(function(){
-					
-					$thisBt.removeClass('loading').attr('title', titleOriginalBt);
 
-					if (msgFinal === 'sucesso') {
-						$thisBt.addClass('done').attr('title', 'Você concluiu o curso!');
-					} 
+					mudarEstadoConclusao(estadoFinal);
 
-					else if (msgFinal === 'impedido'){
-						$pMsgFinal.addClass('aviso');
-					} 
-
-					else if (msgFinal === 'erro') {
-						$thisBt.removeAttr('disabled');
-						$pMsgFinal.addClass('aviso');
-					}
-
-					$pMsgProcessando.removeClass('ativo');
-					$pMsgFinal.html(msgsPossiveis[msgFinal]).addClass('ativo');
-					$linkVoltarPortal.addClass('ativo');
 				}, (tempoAnimFinal > 0 ? tempoAnimFinal : 0) );
 			});
 			

@@ -549,25 +549,97 @@ img#logointro{
 }
 
 
-	#titulointro{
-		margin: 0;
-		margin-left: 0.5em;
-		font-size: 4.5em;
-		line-height: 1;
+#titulointro{
+	margin: 0;
+	margin-left: 0.5em;
+	font-size: 4.5em;
+	line-height: 1;
+	font-weight: normal;
+	color: map-get($cores, turquesa);
+	font-family: $fonte-titulo;
+	span{
+		display: block;
+		font-size: 0.4em;
+		color: black;
+		line-height: 1.6;
 		font-weight: normal;
-		color: map-get($cores, turquesa);
-		font-family: $fonte-titulo;
-		span{
-			display: block;
-			font-size: 0.4em;
-			color: black;
-			line-height: 1.6;
-			font-weight: normal;
-			font-family: $fonte-corpo;
-			margin: 0;
-		}
+		font-family: $fonte-corpo;
+		margin: 0;
+	}
+}
+
+@include keyframes(revelaPraBaixo){
+	0%{
+		@include transform(translateY(-110%));
 	}
 
+	100%{
+		@include transform(translateY(0%));
+	}
+}
+
+#jafezotreinamento{
+	display: none;
+	z-index: 3;
+	position: fixed;
+	top: 0px; left: 0px;
+	padding: 2.5em 0;
+	background-color: #333;
+	color: white;
+	@include animation (revelaPraBaixo 0.3s ease-out 0s 1 normal both);
+
+	&.db{
+		display: block;
+	}
+
+	.box-content{
+		height: 100%;
+		padding: 0;
+		.content{
+			height: 100%;
+			.flexbox{
+				@include align-items(flex-start);
+				img{
+					display: block;
+					@include flex-shrink(0);
+					height: 7em;
+					width: auto;
+					margin-right: 3em;
+				}
+				div{
+					h2{
+						margin-top: 0;
+						font-family: $fonte-titulo;
+						font-weight: normal;
+					}
+					p{
+						margin-top: 0;
+					}
+					a{
+						color: white;
+					}
+				}
+				button{
+					@include flex-shrink(0);
+					@include appearance(none);
+					padding: 0;
+					margin: 0;
+					background-color: transparent;
+					border: none;
+					height: 1.5em;
+					width: 1.5em;
+					margin-left: 3em;
+					background-image: url(../img/fechar.svg);
+					background-size: contain;
+					background-repeat: no-repeat;
+					&:hover{
+						cursor: pointer;
+					}
+				}
+			}
+		}
+	}
+}
 
 
 
@@ -2101,9 +2173,10 @@ img#logointro{
 			}
 
 			.msgs-fim{
+				
 				min-width: 0;
 				width: 640px;
-				min-height: 120px;
+				// min-height: 150px;
 				position: relative;
 				padding-top: 1em;
 				// @include display(flex);
@@ -2114,9 +2187,22 @@ img#logointro{
 					display: none;
 					&.ativo{
 						display: block;
-						@include animation(revelaMsg 0.3s ease-out 0.1s 1 normal both);
+						@include animation(revelaMsg 0.3s ease-out 0.1s 1 normal backwards);
 						&.link-voltar-portal{
-							@include animation-delay(0.4s);
+							@include animation-delay(0.6s);
+
+							text-decoration: none;
+							color: white;
+							padding: 1em 0.5em;
+							background-color: map-get($cores, azul);
+							width: 300px;
+							margin: 0 auto;
+							@include transition(transform 0.2s ease-in-out);
+							@include transform(scale(1));
+
+							&:hover{
+								@include transform(scale(1.1));
+							}
 						}
 					}
 
@@ -2154,6 +2240,33 @@ footer{
 		height: 60px;
 		width: auto;
 	}
+
+	div.contato{
+		font-size: 0.9em;
+		padding: 1em;
+		margin-top: 0;
+		margin-bottom: 0;
+		border-right: 2px dashed black;
+		border-left: 2px dashed black;
+		dl.tel{
+			margin-top: 0;
+			margin-bottom: 0.4em;
+			dt, dd{
+				display: inline;
+				margin: 0;
+			}
+
+			dt{
+				font-weight: bold;
+			}
+		}
+		p{
+			margin: 0;
+			a{
+				color: black;
+			}
+		}
+	}
 	dl.contato{
 		font-size: 0.9em;
 		padding: 1em;
@@ -2175,25 +2288,53 @@ footer{
 	}
 
 	div.logos{
-		@include display(flex);
-		@include align-items(center);
-		img{
-			width: auto;
-			margin-right: 1.2em;
-			&:last-child{
-				margin-right: 0;
-			}
-			&:nth-child(1){
-				height: 27px;
-			}
-			&:nth-child(2){
-				height: 42px;
+		.row{
+			width: 100%;
+			@include display(flex);
+			@include align-items(flex-end);
+			a{
+				display: inline-block;
+				img{
+					display: block;
+					width: auto;
+					&:last-child{
+						margin-right: 0;
+					}
+					&:nth-child(1), &:nth-child(2), &:nth-child(3){
+						height: 21px;
+						margin-right: 0;
+					}
+					&:nth-child(4){
+						height: 42px;
+					}
+
+					&:nth-child(5){
+						height: 60px;
+					}
+				}
 			}
 
-			&:nth-child(3){
-				height: 60px;
+			&:nth-child(1){
+				a{
+					&:nth-child(-n+3){img{height: 1.4em;}}
+					&:nth-child(4){
+						margin-left: 1em;
+						img{height: 2em;}	
+					} 
+					&:nth-child(5){
+						margin-left: 1em;
+						img{height: 2em;}	
+					} 	
+				}
+			}
+
+			&:nth-child(2){
+				a{
+					&:nth-child(-n+2) img{height: 2em;}
+				}
 			}
 		}
+		
 	}
 
 	button.fichatecnica{
